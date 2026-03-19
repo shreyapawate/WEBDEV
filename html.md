@@ -1,20 +1,25 @@
-HTML — Complete Developer Notes (Placement + Interview Ready)
-1. What is HTML?
+✅ COPY EVERYTHING BELOW (Directly Paste in HTML.md)
+# HTML — Complete Developer Notes (Placement + Interview Ready)
 
-HTML (HyperText Markup Language) is the standard language used to create the structure of web pages.
+---
 
-👉 HTML does NOT create logic or styling.
+## 1. What is HTML?
 
-Technology	Role
-HTML	Structure (skeleton)
-CSS	Styling (design)
-JavaScript	Behaviour (brain)
-Key Idea
+**HTML (HyperText Markup Language)** is the standard language used to create the **structure of web pages**.
 
-HTML describes WHAT content exists, not how it looks.
+👉 HTML does **NOT** create logic or styling.
 
-Example:
+| Technology | Role |
+|------------|------|
+| HTML | Structure (skeleton) |
+| CSS | Styling (design) |
+| JavaScript | Behaviour (brain) |
 
+### Key Idea
+HTML describes **WHAT content exists**, not how it looks.
+
+### Example
+```html
 <h1>Hello</h1>
 
 Means → This is a heading.
@@ -34,9 +39,7 @@ JavaScript interacts with DOM.
 An HTML Element = Start Tag + Content + End Tag
 
 <p>This is paragraph</p>
-
-Structure:
-
+Structure
 <p>      → Opening tag
 Content  → Text
 </p>     → Closing tag
@@ -59,9 +62,7 @@ No closing tag.
 Tags are keywords enclosed in angle brackets.
 
 <tagname>
-
-Examples:
-
+Examples
 <h1>
 <p>
 <img>
@@ -84,9 +85,9 @@ Every HTML file must follow this base structure.
 Explanation
 <!DOCTYPE html>
 
-Tells browser → HTML5 document.
+Tells browser → HTML5 document
 
-Prevents compatibility issues.
+Prevents compatibility issues
 
 <html>
 
@@ -110,8 +111,7 @@ Displayed in browser tab.
 
 <title>Portfolio</title>
 
-Interview Tip:
-Title helps SEO ranking.
+Interview Tip: Title helps SEO ranking.
 
 <body>
 
@@ -123,15 +123,12 @@ Used for hyperlinks.
 
 <a href="https://google.com">Visit</a>
 
-Attributes:
+Attribute
 
 href → destination link
 
 Image Tag (<img>)
 <img src="image.jpg" alt="profile">
-
-Attributes:
-
 Attribute	Purpose
 src	image path
 alt	alternative text
@@ -145,18 +142,15 @@ SEO
 
 Image load failure backup
 
-Interview question favorite ✅
+⭐ Interview favorite question
 
 5. Indentation
 
 Indentation improves readability.
 
-Bad:
-
+Bad
 <body><h1>Hello</h1></body>
-
-Good:
-
+Good
 <body>
    <h1>Hello</h1>
 </body>
@@ -182,8 +176,7 @@ Unordered List
 
 Attributes provide extra information.
 
-Syntax:
-
+Syntax
 <tag attribute="value">
 
 Example:
@@ -202,9 +195,6 @@ Tag	Meaning
 <b>	Bold
 <i>	Italic
 <u>	Underline
-
-Example:
-
 <b>Text</b>
 10. Big & Small Tag
 <big>Large text</big>
@@ -215,16 +205,13 @@ Example:
 11. Horizontal Rule
 <hr>
 
-Creates horizontal line.
-
-Used for section separation.
+Creates horizontal line used for section separation.
 
 12. Subscript & Superscript
 H<sub>2</sub>O
 x<sup>2</sup>
 
-Output:
-H₂O, x²
+Output → H₂O, x²
 
 13. Pre Tag
 
@@ -237,33 +224,22 @@ Hello
 
 Used for:
 
-code display
+Code display
 
-poetry
+Poetry
 
-14. Inside <main> Tag
-
-Semantic layout element.
-
+14. Inside <main> Tag (Semantic HTML)
 <main>
    <section></section>
    <article></article>
    <aside></aside>
 </main>
-section
+Tag	Purpose
+section	grouped content
+article	independent content
+aside	sidebar info
 
-Grouped content.
-
-article
-
-Independent content (blog/post).
-
-aside
-
-Sidebar or extra info.
-
-Interview Tip:
-Semantic tags improve SEO + accessibility.
+Interview Tip: Semantic tags improve SEO & accessibility.
 
 15. Anchor Advanced (target)
 <a href="site.com" target="_blank">
@@ -278,18 +254,13 @@ Generic container.
    Content
 </div>
 
-Used for layout grouping.
-
-Block element.
+Block element used for layout grouping.
 
 17. Span Tag
 
 Inline container.
 
 <span>Text</span>
-
-Used for styling small portions.
-
 Difference
 div	span
 block	inline
@@ -301,9 +272,6 @@ new line	same line
 <td>Shreya</td>
 </tr>
 </table>
-
-Elements:
-
 Tag	Meaning
 table	table
 tr	row
@@ -315,10 +283,10 @@ td	data
 Adds table title.
 
 20. Colspan
-
-Merge columns.
-
 <td colspan="2">Merged</td>
+
+Merges columns.
+
 21. Forms (VERY IMPORTANT — Interview Topic)
 
 Forms collect user input.
@@ -340,18 +308,11 @@ Radio Button
 Only one selectable.
 
 22. Class & ID
-ID
-
-Unique element.
-
+ID (Unique)
 <p id="para1">
-Class
-
-Reusable.
-
+Class (Reusable)
 <p class="text">
 
-Interview Question:
 👉 ID = unique
 👉 Class = reusable
 
@@ -370,9 +331,6 @@ Multi-line input.
 <option>India</option>
 </select>
 26. Iframe
-
-Embeds another webpage.
-
 <iframe src="https://example.com"></iframe>
 
 Used for:
@@ -385,9 +343,6 @@ external pages
 
 27. Video Tag
 <video src="video.mp4" controls></video>
-
-Attributes:
-
 Attribute	Purpose
 controls	show play buttons
 loop	repeat video
@@ -408,4 +363,4 @@ class vs id.
 
 alt attribute importance.
 
-Boilerplate structure.
+Boilerplate structure
