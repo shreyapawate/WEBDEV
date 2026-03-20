@@ -1,70 +1,273 @@
-✅ 1. What is HTML?
-📘 Notes:
+## ✅ 1. What is Node.js?
 
-HTML (HyperText Markup Language) is the standard markup language used to create the structure of web pages.
+### 📘 Notes
+Node.js is a runtime environment that lets you run JavaScript outside the browser (like in terminal/servers).
 
-It defines what content exists on a webpage.
+It is built on Google Chrome’s **V8 engine**, which converts JavaScript into machine code.
 
-HTML does not handle styling or logic.
+Node uses an **event-driven, non-blocking I/O model**, making it ideal for scalable server-side applications.
 
-Technology	Role
-HTML	Structure
-CSS	Styling
-JavaScript	Behaviour
-🔹 Example:
-<h1>Hello</h1>
+### ✅ Key Points
+- Written using C++, JavaScript, and libuv
+- Used to build APIs, servers, and real-time apps (chat apps, streaming apps)
 
-Browser understands this as a heading.
+### 🎯 Interview Answer
+Node.js is an open-source JavaScript runtime environment that runs on the V8 engine, allowing JavaScript execution outside the browser. It is widely used for backend development because its event-driven and non-blocking architecture makes it scalable and efficient for I/O-heavy applications.
 
-🎯 Interview Answer:
+---
 
-HTML is a markup language used to structure web content using elements and tags. Browsers parse HTML to create the DOM, which can then be styled using CSS and manipulated using JavaScript.
+## ✅ 2. What is Node REPL?
 
-✅ 2. HTML Elements
-📘 Notes:
+### 📘 Notes
+REPL = **Read – Eval – Print – Loop**
+
+It is a command-line interface where JavaScript code runs line by line.
+
+Used for:
+- Testing snippets
+- Debugging
+- Learning Node quickly
+
+### 🔹 Open REPL
+```bash
+node
+```
+
+### 🎯 Interview Answer
+REPL in Node.js stands for Read-Eval-Print Loop. It is an interactive shell that reads input, evaluates it, prints the result, and repeats the process until exited.
+
+---
+
+## ✅ 3. Running Node Files
+
+### 📘 Notes
+Create a `.js` file and run it using:
+
+```bash
+node file.js
+```
+
+### Example
+```js
+// hello.js
+console.log("Hello, Node!");
+```
+
+```bash
+node hello.js
+```
+
+### 🎯 Interview Tip
+To run a Node script:
+> `node filename.js`
+
+---
+
+## ✅ 4. Process in Node.js
+
+### 📘 Notes
+`process` is a global object providing information about the running Node process.
+
+### Common Uses
+```js
+console.log(process.argv); // command arguments
+console.log(process.env);  // environment variables
+process.exit();            // stop program
+```
+
+### 🎯 Interview Answer
+The process object provides information and control over the current Node.js execution, including command-line arguments, environment variables, and runtime control.
+
+---
+
+## ✅ 5. Exporting in Node.js (Modules)
+
+### 📘 Notes
+Every `.js` file in Node.js is a module.
+
+Use `module.exports` to share code between files.
+
+### Example
+```js
+// math.js
+function add(a, b) {
+  return a + b;
+}
+module.exports = add;
+```
+
+```js
+// app.js
+const add = require('./math');
+console.log(add(2, 3)); // 5
+```
+
+### 🎯 Interview Answer
+`module.exports` is used to export functions or variables so they can be reused in other files using CommonJS modules.
+
+---
+
+## ✅ 6. Exporting from Directories (index.js Pattern)
+
+### 📘 Notes
+`index.js` centralizes exports inside folders.
+
+### Example
+```js
+// math/add.js
+module.exports = (a, b) => a + b;
+```
+
+```js
+// math/index.js
+const add = require('./add');
+module.exports = { add };
+```
+
+```js
+// app.js
+const { add } = require('./math');
+```
+
+### 🎯 Interview Tip
+Using `index.js` simplifies imports and improves project structure.
+
+---
+
+## ✅ 7. What is npm?
+
+### 📘 Notes
+npm = **Node Package Manager**
+
+Used to install libraries like Express.
+
+Comes preinstalled with Node.js.
+
+### Commands
+```bash
+npm init
+npm install xyz
+```
+
+### 🎯 Interview Answer
+npm is the default package manager for Node.js used to manage dependencies and install libraries required in projects.
+
+---
+
+## ✅ 8. What is package.json?
+
+### 📘 Notes
+Created using:
+
+```bash
+npm init
+```
+
+Stores:
+- Project metadata
+- Dependencies
+- Scripts
+
+### Example
+```json
+{
+  "name": "myapp",
+  "version": "1.0.0",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
+```
+
+### 🎯 Interview Answer
+package.json is the configuration file that stores project details, dependencies, and scripts required to run a Node.js application.
+
+---
+
+## ✅ 9. Local vs Global Installation
+
+### 📘 Notes
+
+**Local Install**
+```bash
+npm install express
+```
+- Installed inside project
+- Stored in `node_modules`
+
+**Global Install**
+```bash
+npm install -g nodemon
+```
+- Available system-wide
+- Used mainly for CLI tools
+
+---
+
+## ✅ 10. Importing Modules
+
+### 📘 Notes
+Node.js uses **CommonJS modules**.
+
+```js
+const fs = require('fs');
+```
+
+Used to import built-in or custom modules.
+
+---
+
+# 🌐 HTML Basics
+
+## 1. Why HTML is Important
+
+- Every website starts with HTML.
+- Browser converts HTML → DOM (Document Object Model).
+- JavaScript interacts with the DOM.
+- Without HTML → No webpage.
+
+---
+
+## 2. HTML Elements
 
 An HTML element consists of:
 
-Opening Tag + Content + Closing Tag
+```
+Start Tag + Content + End Tag
+```
+
 Example:
+```html
 <p>This is a paragraph</p>
-Types of Elements:
+```
 
-1️⃣ Container Elements
+### Structure
+- `<p>` → Opening tag
+- Content → Text
+- `</p>` → Closing tag
 
+---
+
+## Types of Elements
+
+### Container Elements
+```html
 <p></p>
 <div></div>
+```
 
-2️⃣ Empty (Void) Elements
-
+### Empty (Void) Elements
+```html
 <img>
 <br>
 <hr>
-🎯 Interview Answer:
+```
 
-HTML elements define webpage components and may contain content or be self-closing depending on their purpose.
+---
 
-✅ 3. HTML Tags
-📘 Notes:
+## 3. HTML Boilerplate (VERY IMPORTANT)
 
-Tags are keywords enclosed within angle brackets.
-
-<tagname>
-
-Examples:
-
-<h1>
-<p>
-<img>
-🎯 Interview Answer:
-
-Tags instruct the browser how to display or structure content.
-
-✅ 4. HTML Boilerplate Structure
-📘 Notes:
-
-Every HTML page follows a base template.
-
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,253 +277,52 @@ Every HTML page follows a base template.
    Content here
 </body>
 </html>
-Explanation:
+```
 
-<!DOCTYPE html> → Defines HTML5 document
+### Explanation
 
-<html> → Root element
+**`<!DOCTYPE html>`**
+- Defines HTML5 document
+- Prevents compatibility issues
 
-<head> → Metadata section
+**`<html>`**
+- Root element
 
-<title> → Browser tab title
+**`<head>`**
+- Metadata
+- CSS links
+- SEO info
 
-<body> → Visible webpage content
+**`<title>`**
+- Appears in browser tab
+- Helps SEO ranking
 
-🎯 Interview Answer:
+**`<body>`**
+- Visible webpage content
 
-The HTML boilerplate ensures browsers correctly interpret the document as an HTML5 webpage.
+---
 
-✅ 5. Anchor Tag (<a>)
-📘 Notes:
+## Anchor Tag
 
-Used to create hyperlinks.
+```html
+<a href="https://google.com">Visit</a>
+```
 
-<a href="https://google.com">Visit Google</a>
-Important Attributes:
+- `href` → destination link
 
-href → destination link
+---
 
-target="_blank" → open in new tab
+## Image Tag
 
-🎯 Interview Tip:
-
-Anchor tags connect webpages and enable navigation.
-
-✅ 6. Image Tag
-📘 Notes:
-
-Displays images.
-
+```html
 <img src="image.jpg" alt="profile">
-Attribute	Purpose
-src	Image path
-alt	Alternative text
-Why alt is Important:
-
-Accessibility
-
-SEO improvement
-
-Screen readers
-
-Backup text if image fails
-
-🎯 Interview Answer:
-
-The alt attribute improves accessibility and helps search engines understand images.
-
-✅ 7. Indentation
-📘 Notes:
-
-Indentation improves readability but does not affect output.
-
-Bad:
-
-<<body><h1>Hello</h1></body>
-
-Good:
-
-<body>
-   <h1>Hello</h1>
-</body>
-✅ 8. Lists in HTML
-Ordered List:
-<ol>
-  <li>Item</li>
-</ol>
-Unordered List:
-<ul>
-  <li>Item</li>
-</ul>
-✅ 9. HTML Attributes
-📘 Notes:
-
-Attributes provide additional information to elements.
-
-Syntax:
-
-<tag attribute="value">
-
-Example:
-
-<a href="https://example.com">
-✅ 10. Height & Width Attributes
-<img src="img.jpg" width="300" height="200">
-
-⚠ Modern practice → Use CSS instead.
-
-✅ 11. Text Formatting Tags
-Tag	Purpose
-<b>	Bold
-<i>	Italic
-<u>	Underline
-<b>Bold Text</b>
-✅ 12. Big & Small Tags
-<big>Large Text</big>
-<small>Small Text</small>
-
-⚠ Mostly replaced by CSS today.
-
-✅ 13. Horizontal Rule
-<hr>
-
-Creates a thematic break between sections.
-
-✅ 14. Subscript & Superscript
-H<sub>2</sub>O
-x<sup>2</sup>
-
-Output → H₂O, x²
-
-✅ 15. Pre Tag
-
-Preserves formatting and spaces.
-
-<pre>
-Hello
-   World
-</pre>
-
-Used for code or poetry display.
-
-✅ 16. Semantic Tags (main, section, article, aside)
-<main>
-   <section></section>
-   <article></article>
-   <aside></aside>
-</main>
-Meaning:
-
-section → grouped content
-
-article → independent content
-
-aside → sidebar info
-
-🎯 Interview Tip: Semantic tags improve SEO & accessibility.
-
-✅ 17. Div vs Span
-Div (Block Element)
-<div>Content</div>
-Span (Inline Element)
-<span>Text</span>
-div	span
-block	inline
-new line	same line
-✅ 18. Tables
-<table>
-<tr>
-<th>Name</th>
-<td>Shreya</td>
-</tr>
-</table>
-Tag	Meaning
-table	table
-tr	row
-th	heading
-td	data
-✅ 19. Caption Tag
-<caption>Student Data</caption>
-
-Adds title to table.
-
-✅ 20. Colspan
-<td colspan="2">Merged</td>
-
-Merges columns.
-
-✅ 21. Forms in HTML
-<form action="/submit">
-<input type="text" placeholder="Enter name">
-</form>
-Common Inputs:
-
-text
-
-radio
-
-checkbox
-
-textarea
-
-select dropdown
-
-🎯 Interview Answer:
-
-Forms collect user input and send data to servers using HTTP requests.
-
-✅ 22. Class vs ID
-<p id="para1"></p>
-<p class="text"></p>
-ID	Class
-unique	reusable
-
-🎯 Interview Question Favorite ✅
-
-✅ 23. Checkbox
-<input type="checkbox">
-
-Allows multiple selections.
-
-✅ 24. Textarea
-<textarea></textarea>
-
-Multi-line user input.
-
-✅ 25. Select Dropdown
-<select>
-<option>India</option>
-</select>
-✅ 26. Iframe
-<iframe src="https://example.com"></iframe>
-
-Used to embed external webpages, maps, or videos.
-
-✅ 27. Video Tag
-<video src="video.mp4" controls></video>
-
-Attributes:
-
-controls
-
-loop
-
-autoplay
-
-⭐ HTML Interview Revision Summary
-
-HTML builds webpage structure.
-
-Elements vs Tags difference.
-
-Semantic tags improve SEO.
-
-Forms frequently asked in interviews.
-
-div vs span.
-
-class vs id.
-
-alt attribute importance.
-
-Boilerplate structure mandatory.
+```
+
+| Attribute | Purpose |
+|-----------|---------|
+| src | image path |
+| alt | alternative text |
+
+### Why `alt` is Important
+- Accessibility
+- Screen readers
