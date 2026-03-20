@@ -136,7 +136,7 @@ Indentation improves readability but does not affect output.
 
 Bad:
 
-<body><h1>Hello</h1></body>
+<<body><h1>Hello</h1></body>
 
 Good:
 
