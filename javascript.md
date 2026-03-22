@@ -259,14 +259,198 @@ Multiplication executes before addition.
 
 ---
 
-# ⭐ JavaScript Interview Revision Summary
 
-* JavaScript makes webpages interactive.
-* Console is used for debugging.
-* REPL allows quick testing.
-* Variables store data values.
-* JavaScript has dynamic data types.
-* Numbers follow floating-point representation.
-* Operators perform calculations.
-* NaN represents invalid numeric results.
-* Operator precedence controls execution order.
+
+---
+
+## ✅ 10. **let Keyword**
+
+### 📘 Notes:
+
+* `let` is used to declare variables in modern JavaScript.
+* It is **block-scoped**, meaning it works only inside `{ }`.
+* Value can be updated but cannot be redeclared in the same scope.
+
+### 🔹 Example:
+
+```javascript
+let age = 20;
+age = 21; // allowed
+// let age = 25; ❌ redeclaration not allowed
+```
+
+### ✅ Key Points:
+
+* Introduced in ES6.
+* Safer than `var`.
+* Prevents scope issues.
+
+### 🎯 Interview Answer:
+
+> The `let` keyword declares block-scoped variables that can be reassigned but not redeclared within the same scope.
+
+---
+
+## ✅ 11. **const Keyword**
+
+### 📘 Notes:
+
+* `const` declares constant variables.
+* Must be initialized during declaration.
+* Cannot be reassigned later.
+* Block-scoped like `let`.
+
+### 🔹 Example:
+
+```javascript
+const PI = 3.14;
+// PI = 4; ❌ Error
+```
+
+### Objects with const:
+
+```javascript
+const user = { name: "Shreya" };
+user.name = "Sam"; // allowed
+```
+
+### 🎯 Interview Answer:
+
+> The `const` keyword creates block-scoped variables whose values cannot be reassigned after initialization.
+
+---
+
+## ✅ 12. **String Indices**
+
+### 📘 Notes:
+
+* Strings behave like arrays of characters.
+* Each character has an index.
+* Index starts from **0**.
+
+### 🔹 Example:
+
+```javascript
+let lang = "JavaScript";
+
+console.log(lang[0]); // J
+console.log(lang[4]); // S
+```
+
+### Key Points:
+
+* Strings are immutable.
+* Characters cannot be modified directly.
+
+```javascript
+lang[0] = "P"; // does not change string
+```
+
+### 🎯 Interview Answer:
+
+> String indices allow accessing characters using their position starting from index 0.
+
+---
+
+## ✅ 13. **Concatenation**
+
+### 📘 Notes:
+
+Concatenation means joining strings together.
+
+### Using + Operator:
+
+```javascript
+let first = "Hello";
+let second = "World";
+
+console.log(first + " " + second);
+```
+
+### Using Template Literals:
+
+```javascript
+let name = "Shreya";
+console.log(`Hello ${name}`);
+```
+
+### Key Points:
+
+* `+` joins strings.
+* Template literals improve readability.
+
+### 🎯 Interview Answer:
+
+> Concatenation combines multiple strings using the plus operator or template literals.
+
+---
+
+## ✅ 14. **null and undefined**
+
+### 📘 Notes:
+
+Both represent absence of value but are different.
+
+### undefined:
+
+Variable declared but not assigned.
+
+```javascript
+let a;
+console.log(a); // undefined
+```
+
+### null:
+
+Intentional empty value.
+
+```javascript
+let b = null;
+console.log(b); // null
+```
+
+### Difference:
+
+| null | undefined |
+|------|-----------|
+| intentional empty value | value not assigned |
+| type = object | type = undefined |
+
+### 🎯 Interview Answer:
+
+> Undefined means a variable has no assigned value, while null represents an intentional empty value.
+
+---
+
+## ✅ 15. **console.log()**
+
+### 📘 Notes:
+
+* Used to print output in console.
+* Helps debugging programs.
+
+### Example:
+
+```javascript
+console.log("Hello World");
+console.log(10 + 5);
+```
+
+### Printing Variables:
+
+```javascript
+let name = "Shreya";
+console.log(name);
+```
+
+### Key Points:
+
+* Most commonly used debugging method.
+* Works in browser console and Node.js.
+
+### 🎯 Interview Answer:
+
+> console.log() is used to display messages and variable values in the console for debugging and development.
+
+---
+
