@@ -1,212 +1,272 @@
-✅ 1. What is JavaScript?
-📘 Notes
+**important JavaScript fundamentals**—commonly asked in placements.
 
-JavaScript is a high-level programming language used to add interactivity and logic to web pages.
+---
 
-It runs inside browsers and also outside browsers using Node.js.
+## ✅ 1. **What is JavaScript?**
 
-JavaScript is:
+### 📘 Notes:
 
-Interpreted language
-Event-driven
-Single-threaded
-Dynamically typed
-Technology	Role
-HTML	Structure
-CSS	Styling
-JavaScript	Behaviour & Logic
-🔹 Example
-console.log("Hello JavaScript");
+* JavaScript is a **high-level programming language** used to make web pages interactive.
+* It runs inside web browsers and also on servers using **Node.js**.
+* JavaScript enables dynamic behaviour like DOM manipulation, API calls, and event handling.
+* It is one of the **core web technologies** along with HTML and CSS.
 
-Browser prints output in the console.
+### ✅ Key Points:
 
-🎯 Interview Answer
+* Created by **Brendan Eich** in 1995.
+* Standardized as **ECMAScript**.
+* Supports object-oriented and functional programming.
+* Runs using browser engines like **V8**.
 
-JavaScript is a scripting language used to create dynamic and interactive web pages. It runs inside browsers using JavaScript engines and can also run on servers using Node.js.
+### 🎯 Interview Answer:
 
-✅ 2. Console in JavaScript
-📘 Notes
+> JavaScript is a scripting language used to build interactive web applications. It runs on both client-side browsers and server-side environments like Node.js.
 
-The console is used for debugging and displaying program output.
+---
 
-Common Console Methods
-console.log("Message");
-console.error("Error");
-console.warn("Warning");
+## ✅ 2. **Console**
+
+### 📘 Notes:
+
+* The console is used to **display output** and **debug programs**.
+* Helps developers test code during development.
+* Output appears in browser developer tools or Node terminal.
+
+### 🔹 Common Methods:
+
+```javascript
+console.log("Hello");
+console.error("Error occurred");
+console.warn("Warning message");
 console.table([1,2,3]);
-Access Console
+```
 
-Browser → Developer Tools → Console tab.
+### 🎯 Interview Answer:
 
-🎯 Interview Answer
+> The console in JavaScript is used for debugging and displaying program output using methods like console.log(), console.error(), and console.warn().
 
-The console object is used to print output and debug JavaScript programs during development.
+---
 
-✅ 3. REPL (Read–Eval–Print Loop)
-📘 Notes
+## ✅ 3. **REPL**
 
-REPL stands for:
+### 📘 Notes:
 
-Read → takes input
-Evaluate → executes code
-Print → shows output
-Loop → repeats
+* **REPL** = Read – Eval – Print – Loop.
+* Interactive environment to execute JavaScript line by line.
+* Mostly used in Node.js terminal.
 
-Used in browser console and Node.js terminal.
+### 🔹 Start REPL:
 
-Example
+```bash
 node
-2 + 2
+```
 
-Output:
+### Example:
 
-4
-🎯 Interview Answer
+```javascript
+> 2 + 3
+5
+```
 
-REPL is an interactive environment that reads JavaScript input, evaluates it, prints the result, and repeats continuously.
+### 🎯 Interview Answer:
 
-✅ 4. Variables in JavaScript
-📘 Notes
+> REPL is an interactive shell that reads input, evaluates it, prints the result, and repeats the process, allowing quick testing of JavaScript code.
 
-Variables store data values.
+---
 
-Declaration Methods
-var a = 10;
-let b = 20;
-const c = 30;
-Keyword	Scope	Reassign	Redeclare
-var	function	Yes	Yes
-let	block	Yes	No
-const	block	No	No
-Best Practice
-Use const by default
-Use let when value changes
-Avoid var
-🎯 Interview Answer
+## ✅ 4. **Variables**
 
-Variables are containers used to store data values. Modern JavaScript prefers let and const because they provide block scope and safer behavior.
+### 📘 Notes:
 
-✅ 5. Data Types in JavaScript
-📘 Notes
+Variables are containers used to store data values.
 
-JavaScript uses dynamic typing.
+### 🔹 Variable Declarations:
 
-Primitive Data Types
-String
-Number
-Boolean
-Undefined
-Null
-BigInt
-Symbol
-Example
-let name = "Shreya";
+```javascript
+var name = "Shreya";
 let age = 21;
-let isStudent = true;
-Non-Primitive Types
-Object
-Array
-Function
-🎯 Interview Answer
+const pi = 3.14;
+```
 
-JavaScript data types are categorized into primitive and non-primitive types. Primitive types store single values, while objects store collections of data.
+| Keyword | Scope | Reassign | Redeclare |
+|--------|-------|----------|-----------|
+| var | function | ✅ | ✅ |
+| let | block | ✅ | ❌ |
+| const | block | ❌ | ❌ |
 
-✅ 6. Numbers in JavaScript
-📘 Notes
+### ✅ Best Practice:
 
-JavaScript has only one numeric type → Number.
+* Prefer **const**
+* Use **let** when value changes
+* Avoid **var** in modern JS
 
-let x = 10;
-let y = 3.14;
-Special Numeric Values
+### 🎯 Interview Answer:
+
+> Variables store data values in JavaScript. Modern JavaScript mainly uses let and const because they provide better scope control than var.
+
+---
+
+## ✅ 5. **Data Types**
+
+### 📘 Notes:
+
+JavaScript data types define the type of stored value.
+
+### 🔹 Primitive Data Types:
+
+```javascript
+let name = "Shreya";   // String
+let age = 21;          // Number
+let isStudent = true;  // Boolean
+let x = null;          // Null
+let y;                 // Undefined
+let id = Symbol();     // Symbol
+let big = 123n;        // BigInt
+```
+
+### 🔹 Non-Primitive Type:
+
+```javascript
+let person = {
+  name: "Shreya",
+  age: 21
+};
+```
+
+### 🎯 Interview Answer:
+
+> JavaScript includes primitive data types such as string, number, boolean, null, undefined, symbol, and bigint, along with objects as non-primitive types.
+
+---
+
+## ✅ 6. **Numbers in JavaScript**
+
+### 📘 Notes:
+
+* JavaScript has only one numeric type → **Number**.
+* Supports integers and floating-point values.
+
+### 🔹 Examples:
+
+```javascript
+let a = 10;
+let b = 10.5;
+let c = 2e3; // 2000
+```
+
+### 🔹 Useful Methods:
+
+```javascript
+Number("123");
+parseInt("50px");
+parseFloat("3.14");
+```
+
+### Special Values:
+
+```javascript
 Infinity
 -Infinity
 NaN
-Useful Methods
-Number("123");
-parseInt("10");
-parseFloat("3.5");
-🎯 Interview Tip
+```
 
-JavaScript does not differentiate between integers and floating numbers.
+### 🎯 Interview Answer:
 
-✅ 7. Operations in JavaScript
-Arithmetic Operators
-+   // addition
--   // subtraction
-*   // multiplication
-/   // division
-%   // modulus
-**  // exponent
+> JavaScript uses a single Number type for all numeric values, represented using the IEEE 754 floating-point format.
 
-Example:
+---
 
-5 + 2;   // 7
-5 % 2;   // 1
-Comparison Operators
-==
-===
-!=
->
-<
+## ✅ 7. **Operations in JavaScript**
 
-Important difference:
+### 📘 Notes:
 
-5 == "5";   // true
-5 === "5";  // false
-🎯 Interview Answer
+JavaScript supports different types of operators.
 
-Operators are symbols used to perform calculations, comparisons, and logical operations on values.
+### 🔹 Arithmetic Operators:
 
-✅ 8. NaN (Not a Number)
-📘 Notes
+```javascript
++  // Addition
+-  // Subtraction
+*  // Multiplication
+/  // Division
+%  // Modulus
+** // Exponent
+```
 
-NaN represents an invalid numeric result.
+### 🔹 Example:
 
-Example
-0 / 0;
-Number("hello");
+```javascript
+let result = 10 + 5;
+```
 
-Output:
+### 🎯 Interview Answer:
 
-NaN
+> Operators in JavaScript perform operations on values and variables such as arithmetic, comparison, and logical operations.
 
-Special property:
+---
 
-typeof NaN; // "number"
+## ✅ 8. **NaN (Not a Number)**
 
-Check NaN:
+### 📘 Notes:
 
-Number.isNaN(value);
-🎯 Interview Answer
+* NaN represents an invalid numeric result.
+* Occurs when mathematical operations fail.
 
-NaN stands for Not a Number and represents the result of an invalid mathematical operation.
+### Example:
 
-✅ 9. Operator Precedence
-📘 Notes
+```javascript
+let x = "hello" / 2;
+console.log(x); // NaN
+```
 
-Operator precedence determines execution order.
+### Check NaN:
 
-Example
-2 + 3 * 4;
+```javascript
+isNaN("abc"); // true
+```
 
-Output:
+### 🎯 Interview Answer:
 
-14
+> NaN stands for Not a Number and represents an invalid numeric calculation result in JavaScript.
+
+---
+
+## ✅ 9. **Operator Precedence**
+
+### 📘 Notes:
+
+Operator precedence determines **execution order** in expressions.
+
+### Example:
+
+```javascript
+let result = 10 + 5 * 2;
+console.log(result); // 20
+```
 
 Multiplication executes before addition.
 
-Common Order (High → Low)
-Parentheses ()
-Exponent **
-* / %
-+ -
-Comparison operators
-Logical operators
+### Priority Order (High → Low):
 
-Best practice:
+1. `()` Parentheses
+2. `**` Exponent
+3. `* / %`
+4. `+ -`
 
-(2 + 3) * 4;
-🎯 Interview Answer
+### 🎯 Interview Answer:
 
-Operator precedence defines the order in which operators are evaluated in JavaScript expressions.
+> Operator precedence defines the order in which operators are evaluated in a JavaScript expression.
+
+---
+
+# ⭐ JavaScript Interview Revision Summary
+
+* JavaScript makes webpages interactive.
+* Console is used for debugging.
+* REPL allows quick testing.
+* Variables store data values.
+* JavaScript has dynamic data types.
+* Numbers follow floating-point representation.
+* Operators perform calculations.
+* NaN represents invalid numeric results.
+* Operator precedence controls execution order.
