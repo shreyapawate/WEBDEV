@@ -454,3 +454,245 @@ console.log(name);
 
 ---
 
+## ✅ 16. **Linking JavaScript File**
+
+### 📘 Notes:
+
+* JavaScript can be connected to an HTML file using the `<script>` tag.
+* It allows browsers to execute JavaScript code.
+* External files help keep code clean and reusable.
+
+### 🔹 Internal JavaScript Example:
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+  console.log("Hello from internal JS");
+</script>
+
+</body>
+</html>
+```
+
+### 🔹 External JavaScript (Recommended):
+
+Create a file named `script.js`.
+
+```javascript
+console.log("Hello from external JS");
+```
+
+Link it inside HTML:
+
+```html
+<script src="script.js"></script>
+```
+
+### ✅ Key Points:
+
+* External JS improves code organization.
+* Place `<script>` before `</body>` for better loading performance.
+
+### 🎯 Interview Answer:
+
+> JavaScript files are linked using the script tag with the src attribute, allowing separation of HTML and JavaScript code.
+
+---
+
+## ✅ 17. **Template Literals**
+
+### 📘 Notes:
+
+* Template literals use backticks `` ` `` instead of quotes.
+* Allow embedding variables using `${}`.
+* Support multi-line strings.
+
+### 🔹 Example:
+
+```javascript
+let name = "Shreya";
+let age = 20;
+
+console.log(`My name is ${name} and I am ${age} years old.`);
+```
+
+### Multi-line String:
+
+```javascript
+let message = `This is
+a multi-line
+string`;
+
+console.log(message);
+```
+
+### ✅ Key Points:
+
+* Improves readability.
+* Supports expression interpolation.
+
+### 🎯 Interview Answer:
+
+> Template literals allow embedding variables and expressions inside strings using backticks and ${} syntax.
+
+---
+
+## ✅ 18. **Operations in JavaScript**
+
+### 📘 Notes:
+
+Operations perform calculations and value manipulations.
+
+### Arithmetic Operators:
+
+```javascript
+let a = 10;
+let b = 5;
+
+console.log(a + b);
+console.log(a - b);
+console.log(a * b);
+console.log(a / b);
+console.log(a % b);
+console.log(a ** b);
+```
+
+### Assignment Operators:
+
+```javascript
+let x = 10;
+x += 5;
+x -= 2;
+x *= 3;
+x /= 2;
+```
+
+### Increment & Decrement:
+
+```javascript
+let n = 5;
+n++;
+n--;
+```
+
+### ✅ Key Points:
+
+* Arithmetic operators perform math operations.
+* Assignment operators update values quickly.
+
+### 🎯 Interview Answer:
+
+> JavaScript operations include arithmetic, assignment, and increment/decrement operators used to manipulate values and perform calculations.
+
+---
+
+## ✅ 19. **Comparison for Non-Numbers**
+
+### 📘 Notes:
+
+JavaScript can compare values of different types.
+
+### Equality Operators:
+
+```javascript
+console.log(5 == "5");   // true
+console.log(5 === "5");  // false
+console.log(5 != "5");
+console.log(5 !== "5");
+```
+
+### String Comparison:
+
+```javascript
+console.log("apple" > "banana");
+console.log("cat" > "car");
+```
+
+### Boolean Comparison:
+
+```javascript
+console.log(true == 1);
+console.log(false == 0);
+```
+
+### Falsy Values:
+
+* false
+* 0
+* ""
+* null
+* undefined
+* NaN
+
+### 🎯 Interview Answer:
+
+> JavaScript compares non-number values using type coercion with == and strict comparison with ===.
+
+---
+
+## ✅ 20. **Conditional Statements**
+
+### 📘 Notes:
+
+Conditional statements execute code based on conditions.
+
+### if Statement:
+
+```javascript
+let age = 18;
+
+if (age >= 18) {
+  console.log("Eligible to vote");
+}
+```
+
+### if...else Statement:
+
+```javascript
+let number = 7;
+
+if (number % 2 === 0) {
+  console.log("Even");
+} else {
+  console.log("Odd");
+}
+```
+
+### else if Ladder:
+
+```javascript
+let marks = 85;
+
+if (marks >= 90) {
+  console.log("Grade A");
+} else if (marks >= 75) {
+  console.log("Grade B");
+} else if (marks >= 50) {
+  console.log("Grade C");
+} else {
+  console.log("Fail");
+}
+```
+
+### Ternary Operator:
+
+```javascript
+let age = 20;
+let result = (age >= 18) ? "Adult" : "Minor";
+console.log(result);
+```
+
+### ✅ Key Points:
+
+* Controls program flow.
+* Ternary operator is shorthand for if-else.
+
+### 🎯 Interview Answer:
+
+> Conditional statements like if, else, and ternary operators allow execution of code based on logical conditions.
+
+---
+
