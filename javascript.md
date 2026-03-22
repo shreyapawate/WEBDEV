@@ -1,4 +1,3 @@
-⚡ JavaScript — Detailed Placement Notes with Interview Answers
 ✅ 1. What is JavaScript?
 📘 Notes
 
@@ -18,25 +17,26 @@ CSS	Styling
 JavaScript	Behaviour & Logic
 🔹 Example
 console.log("Hello JavaScript");
+
+Browser prints output in the console.
+
 🎯 Interview Answer
 
-JavaScript is a scripting language used to create dynamic and interactive web pages. It runs in browsers using JavaScript engines and can also run on servers using Node.js.
+JavaScript is a scripting language used to create dynamic and interactive web pages. It runs inside browsers using JavaScript engines and can also run on servers using Node.js.
 
 ✅ 2. Console in JavaScript
 📘 Notes
 
 The console is used for debugging and displaying program output.
 
-Developers use it to test code and find errors.
-
 Common Console Methods
 console.log("Message");
 console.error("Error");
 console.warn("Warning");
 console.table([1,2,3]);
-Where to Access
+Access Console
 
-Browser → Developer Tools → Console Tab
+Browser → Developer Tools → Console tab.
 
 🎯 Interview Answer
 
@@ -48,14 +48,12 @@ The console object is used to print output and debug JavaScript programs during 
 REPL stands for:
 
 Read → takes input
-Eval → executes code
+Evaluate → executes code
 Print → shows output
-Loop → repeats process
+Loop → repeats
 
-Used in:
+Used in browser console and Node.js terminal.
 
-Browser console
-Node.js terminal
 Example
 node
 2 + 2
@@ -76,11 +74,10 @@ Declaration Methods
 var a = 10;
 let b = 20;
 const c = 30;
-Difference
 Keyword	Scope	Reassign	Redeclare
-var	function	✅	✅
-let	block	✅	❌
-const	block	❌	❌
+var	function	Yes	Yes
+let	block	Yes	No
+const	block	No	No
 Best Practice
 Use const by default
 Use let when value changes
@@ -144,22 +141,19 @@ Arithmetic Operators
 
 Example:
 
-5 + 2   // 7
-5 % 2   // 1
-Assignment Operators
-+=
--=
-*=
-/=
+5 + 2;   // 7
+5 % 2;   // 1
 Comparison Operators
 ==
 ===
 !=
 >
 <
-Important Difference
-5 == "5"   // true
-5 === "5"  // false
+
+Important difference:
+
+5 == "5";   // true
+5 === "5";  // false
 🎯 Interview Answer
 
 Operators are symbols used to perform calculations, comparisons, and logical operations on values.
@@ -176,9 +170,13 @@ Number("hello");
 Output:
 
 NaN
-Special Property
-typeof NaN // "number"
-Checking NaN
+
+Special property:
+
+typeof NaN; // "number"
+
+Check NaN:
+
 Number.isNaN(value);
 🎯 Interview Answer
 
@@ -187,10 +185,10 @@ NaN stands for Not a Number and represents the result of an invalid mathematical
 ✅ 9. Operator Precedence
 📘 Notes
 
-Operator precedence determines execution order of operations.
+Operator precedence determines execution order.
 
 Example
-2 + 3 * 4
+2 + 3 * 4;
 
 Output:
 
@@ -199,25 +197,16 @@ Output:
 Multiplication executes before addition.
 
 Common Order (High → Low)
-() Parentheses
-** Exponent
+Parentheses ()
+Exponent **
 * / %
 + -
-Comparison
+Comparison operators
 Logical operators
-Best Practice
-(2 + 3) * 4
+
+Best practice:
+
+(2 + 3) * 4;
 🎯 Interview Answer
 
 Operator precedence defines the order in which operators are evaluated in JavaScript expressions.
-
-⭐ JavaScript Interview Revision Summary
-JavaScript adds behaviour and logic to webpages.
-Console is used for debugging.
-REPL enables interactive execution.
-Prefer let and const over var.
-JavaScript uses dynamic typing.
-Only one number type exists.
-Use === instead of ==.
-NaN represents invalid numeric results.
-Operator precedence controls evaluation order.
