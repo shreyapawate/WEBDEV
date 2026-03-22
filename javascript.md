@@ -696,3 +696,250 @@ console.log(result);
 
 ---
 
+## ✅ 21. **Logical Operators**
+
+### 📘 Notes:
+
+* Logical operators are used to combine multiple conditions.
+* They return boolean values (`true` or `false`).
+
+### 🔹 Types of Logical Operators:
+
+```javascript
+&&  // AND
+||  // OR
+!   // NOT
+```
+
+### 🔹 Examples:
+
+```javascript
+let age = 20;
+
+console.log(age > 18 && age < 25); // true
+console.log(age < 18 || age == 20); // true
+console.log(!(age > 18)); // false
+```
+
+### ✅ Key Points:
+
+* `&&` → true only if both conditions are true.
+* `||` → true if at least one condition is true.
+* `!` → reverses boolean value.
+
+### 🎯 Interview Answer:
+
+> Logical operators combine multiple conditions and return boolean results based on logical evaluation.
+
+---
+
+## ✅ 22. **Truthy and Falsy Values**
+
+### 📘 Notes:
+
+In JavaScript, values are automatically treated as **true** or **false** in conditions.
+
+### 🔹 Falsy Values (only 6):
+
+```javascript
+false
+0
+""
+null
+undefined
+NaN
+```
+
+### 🔹 Truthy Values:
+
+Everything else is truthy.
+
+```javascript
+"hello"
+1
+[]
+{}
+true
+```
+
+### Example:
+
+```javascript
+if ("hello") {
+  console.log("Truthy value");
+}
+```
+
+### ✅ Key Points:
+
+* JavaScript performs automatic boolean conversion.
+* Important for condition checking.
+
+### 🎯 Interview Answer:
+
+> Truthy values evaluate to true and falsy values evaluate to false when used in boolean contexts.
+
+---
+
+## ✅ 23. **Switch Statements**
+
+### 📘 Notes:
+
+* Used when multiple conditions depend on one variable.
+* Cleaner alternative to multiple `if-else` statements.
+
+### 🔹 Syntax:
+
+```javascript
+switch(expression) {
+  case value1:
+    // code
+    break;
+  case value2:
+    // code
+    break;
+  default:
+    // code
+}
+```
+
+### 🔹 Example:
+
+```javascript
+let day = 2;
+
+switch(day) {
+  case 1:
+    console.log("Monday");
+    break;
+  case 2:
+    console.log("Tuesday");
+    break;
+  default:
+    console.log("Invalid day");
+}
+```
+
+### ✅ Key Points:
+
+* `break` prevents fall-through.
+* `default` runs if no case matches.
+
+### 🎯 Interview Answer:
+
+> A switch statement evaluates an expression and executes matching case blocks, providing a structured alternative to if-else ladders.
+
+---
+
+## ✅ 24. **Alert, Error, Warning & Prompts**
+
+### 📘 Notes:
+
+Browser provides dialog boxes for interaction.
+
+### 🔹 alert()
+
+Displays a message box.
+
+```javascript
+alert("Hello User!");
+```
+
+### 🔹 prompt()
+
+Takes input from user.
+
+```javascript
+let name = prompt("Enter your name:");
+console.log(name);
+```
+
+### 🔹 console.error() & console.warn()
+
+```javascript
+console.error("This is an error");
+console.warn("This is a warning");
+```
+
+### ✅ Key Points:
+
+* `alert()` → shows message.
+* `prompt()` → accepts input.
+* Used for simple user interaction and debugging.
+
+### 🎯 Interview Answer:
+
+> JavaScript provides alert and prompt dialogs for user interaction and console methods for error and warning messages.
+
+---
+
+## ✅ 25. **str.trim()**
+
+### 📘 Notes:
+
+* Removes whitespace from beginning and end of a string.
+* Does not modify original string (returns new string).
+
+### 🔹 Example:
+
+```javascript
+let text = "   Hello World   ";
+let result = text.trim();
+
+console.log(result);
+```
+
+### Output:
+
+```
+Hello World
+```
+
+### ✅ Key Points:
+
+* Removes spaces only from start and end.
+* Useful for form validation.
+
+### 🎯 Interview Answer:
+
+> trim() removes extra whitespace from the start and end of a string.
+
+---
+
+## ✅ 26. **str.toUpperCase()**
+
+### 📘 Notes:
+
+* Converts all characters of a string into uppercase letters.
+* Returns a new string.
+
+### 🔹 Example:
+
+```javascript
+let name = "shreya";
+console.log(name.toUpperCase());
+```
+
+### Output:
+
+```
+SHREYA
+```
+
+### Related Method:
+
+```javascript
+name.toLowerCase();
+```
+
+### ✅ Key Points:
+
+* Strings are immutable.
+* Original string remains unchanged.
+
+### 🎯 Interview Answer:
+
+> toUpperCase() converts all characters in a string to uppercase and returns a new string.
+
+---
+
