@@ -943,3 +943,203 @@ name.toLowerCase();
 
 ---
 
+
+## ✅ 27. **str.toLowerCase()**
+
+### 📘 Notes:
+
+* Converts all characters of a string into lowercase letters.
+* Returns a **new string** (original string remains unchanged).
+
+### 🔹 Example:
+
+```javascript
+let name = "SHREYA";
+console.log(name.toLowerCase());
+```
+
+### Output:
+
+```
+shreya
+```
+
+### ✅ Key Points:
+
+* Strings are immutable.
+* Often used for case-insensitive comparisons.
+
+### 🎯 Interview Answer:
+
+> toLowerCase() converts all characters of a string into lowercase and returns a new modified string.
+
+---
+
+## ✅ 28. **indexOf()**
+
+### 📘 Notes:
+
+* Finds the **position (index)** of a substring inside a string.
+* Returns the index of first occurrence.
+* Returns `-1` if value is not found.
+
+### 🔹 Example:
+
+```javascript
+let text = "JavaScript";
+
+console.log(text.indexOf("S")); // 4
+console.log(text.indexOf("z")); // -1
+```
+
+### ✅ Key Points:
+
+* Case-sensitive.
+* Useful for searching text.
+
+### 🎯 Interview Answer:
+
+> indexOf() returns the position of the first occurrence of a specified value in a string, or -1 if not found.
+
+---
+
+## ✅ 29. **Method Chaining**
+
+### 📘 Notes:
+
+* Method chaining means calling multiple methods on the same object in one line.
+* Each method returns a value used by the next method.
+
+### 🔹 Example:
+
+```javascript
+let text = "   hello world   ";
+
+let result = text.trim().toUpperCase();
+console.log(result);
+```
+
+### Output:
+
+```
+HELLO WORLD
+```
+
+### ✅ Key Points:
+
+* Improves readability.
+* Reduces extra variables.
+
+### 🎯 Interview Answer:
+
+> Method chaining is the technique of calling multiple methods sequentially on the same object because each method returns a value.
+
+---
+
+## ✅ 30. **slice()**
+
+### 📘 Notes:
+
+* Extracts a part of a string.
+* Does not modify original string.
+
+### 🔹 Syntax:
+
+```javascript
+string.slice(start, end);
+```
+
+### 🔹 Example:
+
+```javascript
+let text = "JavaScript";
+
+console.log(text.slice(0, 4)); // Java
+console.log(text.slice(4));    // Script
+```
+
+### ✅ Key Points:
+
+* `start` index included.
+* `end` index excluded.
+* Supports negative indexing.
+
+```javascript
+text.slice(-6); // Script
+```
+
+### 🎯 Interview Answer:
+
+> slice() extracts a portion of a string between specified indices and returns a new string.
+
+---
+
+## ✅ 31. **replace()**
+
+### 📘 Notes:
+
+* Replaces a specified value with another value.
+* Returns a new string.
+
+### 🔹 Example:
+
+```javascript
+let text = "Hello World";
+
+console.log(text.replace("World", "JavaScript"));
+```
+
+### Output:
+
+```
+Hello JavaScript
+```
+
+### ✅ Key Points:
+
+* Replaces only first occurrence by default.
+* Original string remains unchanged.
+
+### 🎯 Interview Answer:
+
+> replace() substitutes a specified part of a string with another value and returns a new modified string.
+
+---
+
+## ✅ 32. **repeat()**
+
+### 📘 Notes:
+
+* Repeats a string a specified number of times.
+
+### 🔹 Syntax:
+
+```javascript
+string.repeat(count);
+```
+
+### 🔹 Example:
+
+```javascript
+let word = "Hi ";
+
+console.log(word.repeat(3));
+```
+
+### Output:
+
+```
+Hi Hi Hi
+```
+
+### ✅ Key Points:
+
+* Count must be positive.
+* Useful for patterns and formatting.
+
+### 🎯 Interview Answer:
+
+> repeat() creates a new string by repeating the original string a specified number of times.
+
+---
+
