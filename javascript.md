@@ -1451,15 +1451,248 @@ Output:
 
 ---
 
-# ⭐ JavaScript Interview Revision Summary
+**important JavaScript fundamentals**—commonly asked in placements.
 
-* Arrays store multiple values.
-* Arrays are mutable.
-* push/pop work at end.
-* shift/unshift work at beginning.
-* indexOf finds position.
-* includes checks existence.
-* concat merges arrays.
-* reverse changes order.
-* slice copies part of array.
-* splice modifies array structure.
+---
+
+## ✅ 42. **sort()**
+
+### 📘 Notes:
+
+* `sort()` arranges array elements in order.
+* By default, sorting happens **alphabetically (string order)**.
+* It modifies the original array.
+
+### 🔹 Example:
+
+```javascript
+let fruits = ["Banana", "Apple", "Mango"];
+fruits.sort();
+
+console.log(fruits);
+```
+
+Output:
+
+```
+["Apple", "Banana", "Mango"]
+```
+
+### ⚠ Number Sorting Issue:
+
+```javascript
+let nums = [10, 2, 5];
+nums.sort();
+
+console.log(nums);
+```
+
+Output:
+
+```
+[10, 2, 5] // incorrect numeric order
+```
+
+### ✅ Correct Numeric Sort:
+
+```javascript
+nums.sort((a, b) => a - b);
+```
+
+### 🎯 Interview Answer:
+
+> sort() arranges array elements but sorts values as strings by default, so a compare function is needed for numeric sorting.
+
+---
+
+## ✅ 43. **Array References**
+
+### 📘 Notes:
+
+* Arrays are **reference types**.
+* Assigning one array to another copies the **reference**, not the values.
+
+### 🔹 Example:
+
+```javascript
+let arr1 = [1, 2, 3];
+let arr2 = arr1;
+
+arr2.push(4);
+
+console.log(arr1);
+```
+
+Output:
+
+```
+[1, 2, 3, 4]
+```
+
+### ✅ Explanation:
+
+Both variables point to the **same memory location**.
+
+### 🎯 Interview Answer:
+
+> Arrays are stored by reference in JavaScript, meaning multiple variables can point to the same array object.
+
+---
+
+## ✅ 44. **const Arrays**
+
+### 📘 Notes:
+
+* Arrays declared with `const` cannot be reassigned.
+* But elements inside the array **can be modified**.
+
+### 🔹 Example:
+
+```javascript
+const nums = [1, 2, 3];
+
+nums.push(4); // allowed
+console.log(nums);
+```
+
+### ❌ Not Allowed:
+
+```javascript
+nums = [5, 6]; // Error
+```
+
+### 🎯 Interview Answer:
+
+> A const array prevents reassignment of the reference but still allows modification of its elements.
+
+---
+
+## ✅ 45. **Nested Arrays**
+
+### 📘 Notes:
+
+* Arrays inside another array are called nested arrays.
+* Used to represent matrices or grouped data.
+
+### 🔹 Example:
+
+```javascript
+let matrix = [
+  [1, 2],
+  [3, 4],
+  [5, 6]
+];
+
+console.log(matrix[0][1]); // 2
+```
+
+### ✅ Key Points:
+
+* Access using multiple indices.
+* Common in 2D data structures.
+
+### 🎯 Interview Answer:
+
+> Nested arrays are arrays containing other arrays and are commonly used for multidimensional data representation.
+
+---
+
+## ✅ 46. **Loops**
+
+### 📘 Notes:
+
+Loops execute code repeatedly until a condition becomes false.
+
+---
+
+### 🔹 for Loop
+
+```javascript
+for (let i = 0; i < 5; i++) {
+  console.log(i);
+}
+```
+
+---
+
+### 🔹 Infinite Loop (⚠ Dangerous)
+
+```javascript
+for (;;) {
+  console.log("Runs forever");
+}
+```
+
+Occurs when stopping condition is missing.
+
+---
+
+### 🔹 Nested Loop
+
+```javascript
+for (let i = 1; i <= 2; i++) {
+  for (let j = 1; j <= 2; j++) {
+    console.log(i, j);
+  }
+}
+```
+
+Loop inside another loop.
+
+---
+
+### 🔹 while Loop
+
+```javascript
+let i = 0;
+
+while (i < 3) {
+  console.log(i);
+  i++;
+}
+```
+
+Runs while condition is true.
+
+### 🎯 Interview Answer:
+
+> Loops in JavaScript execute blocks of code repeatedly using constructs like for and while loops based on conditions.
+
+---
+
+## ✅ 47. **break Keyword**
+
+### 📘 Notes:
+
+* `break` immediately stops loop execution.
+* Control moves outside the loop.
+
+### 🔹 Example:
+
+```javascript
+for (let i = 1; i <= 5; i++) {
+  if (i === 3) {
+    break;
+  }
+  console.log(i);
+}
+```
+
+Output:
+
+```
+1
+2
+```
+
+### ✅ Key Points:
+
+* Used in loops and switch statements.
+* Helps exit early when condition is met.
+
+### 🎯 Interview Answer:
+
+> The break keyword terminates the current loop or switch statement immediately when executed.
+
+---
+
