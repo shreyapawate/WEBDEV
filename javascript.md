@@ -1695,4 +1695,138 @@ Output:
 > The break keyword terminates the current loop or switch statement immediately when executed.
 
 ---
+**important JavaScript fundamentals**—commonly asked in placements.
+
+---
+
+## ✅ 48. **Loops with Arrays**
+
+### 📘 Notes:
+
+* Loops are commonly used to access each element of an array.
+* Helps perform operations on all items.
+
+### 🔹 Using for Loop:
+
+```javascript
+let fruits = ["Apple", "Mango", "Banana"];
+
+for (let i = 0; i < fruits.length; i++) {
+  console.log(fruits[i]);
+}
+```
+
+### 🔹 Using while Loop:
+
+```javascript
+let i = 0;
+
+while (i < fruits.length) {
+  console.log(fruits[i]);
+  i++;
+}
+```
+
+### ✅ Key Points:
+
+* `array.length` controls loop execution.
+* Used for searching, updating, or printing elements.
+
+### 🎯 Interview Answer:
+
+> Loops with arrays allow iteration through each element using index-based access, commonly implemented using for or while loops.
+
+---
+
+## ✅ 49. **Loops with Nested Arrays**
+
+### 📘 Notes:
+
+* Nested arrays require **nested loops** for traversal.
+* Each inner array must be accessed separately.
+
+### 🔹 Example:
+
+```javascript
+let students = [
+  ["Shreya", "Amit"],
+  ["Riya", "Rahul"],
+  ["Neha", "Karan"]
+];
+
+for (let i = 0; i < students.length; i++) {
+  for (let j = 0; j < students[i].length; j++) {
+    console.log(students[i][j]);
+  }
+}
+```
+
+### Output:
+
+```
+Shreya
+Amit
+Riya
+Rahul
+Neha
+Karan
+```
+
+### ✅ Key Points:
+
+* Outer loop → rows
+* Inner loop → elements inside row
+
+### 🎯 Interview Answer:
+
+> Nested loops are used to iterate through nested arrays where each inner array requires a separate loop for traversal.
+
+---
+
+## ✅ 50. **for...of Loop**
+
+### 📘 Notes:
+
+* `for...of` is a modern loop used to iterate directly over values.
+* Eliminates the need for index variables.
+* Works with arrays, strings, and iterable objects.
+
+### 🔹 Syntax:
+
+```javascript
+for (variable of iterable) {
+   // code
+}
+```
+
+### 🔹 Example with Array:
+
+```javascript
+let fruits = ["Apple", "Mango", "Banana"];
+
+for (let fruit of fruits) {
+  console.log(fruit);
+}
+```
+
+### 🔹 Example with String:
+
+```javascript
+for (let char of "Hello") {
+  console.log(char);
+}
+```
+
+### ✅ Key Points:
+
+* Cleaner and readable syntax.
+* Does not provide index directly.
+* Preferred for simple iteration.
+
+### 🎯 Interview Answer:
+
+> The for...of loop iterates over iterable objects and directly accesses values instead of indexes, making iteration simpler and more readable.
+
+---
+
 
