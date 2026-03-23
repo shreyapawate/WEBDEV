@@ -1142,4 +1142,324 @@ Hi Hi Hi
 > repeat() creates a new string by repeating the original string a specified number of times.
 
 ---
+**important JavaScript fundamentals**—commonly asked in placements.
 
+---
+
+## ✅ 33. **Array**
+
+### 📘 Notes:
+
+* An array is a data structure used to store **multiple values in a single variable**.
+* Arrays can store different data types.
+* Indexing starts from **0**.
+
+### 🔹 Example:
+
+```javascript
+let fruits = ["Apple", "Mango", "Banana"];
+console.log(fruits[0]); // Apple
+```
+
+### ✅ Key Points:
+
+* Ordered collection.
+* Dynamic size.
+* Supports built-in methods.
+
+### 🎯 Interview Answer:
+
+> An array in JavaScript is an ordered collection of elements stored in a single variable and accessed using index positions.
+
+---
+
+## ✅ 34. **Arrays are Mutable**
+
+### 📘 Notes:
+
+* Arrays in JavaScript are **mutable**, meaning their values can be changed after creation.
+
+### 🔹 Example:
+
+```javascript
+let nums = [1, 2, 3];
+
+nums[0] = 100;
+console.log(nums);
+```
+
+### Output:
+
+```
+[100, 2, 3]
+```
+
+### ✅ Key Points:
+
+* Elements can be added, removed, or modified.
+* Reference type data structure.
+
+### 🎯 Interview Answer:
+
+> Arrays are mutable because their elements can be modified without creating a new array.
+
+---
+
+## ✅ 35. **Array Methods: push(), pop(), unshift(), shift()**
+
+### 📘 Notes:
+
+These methods modify the original array.
+
+### 🔹 push() → adds element at end
+
+```javascript
+let arr = [1, 2];
+arr.push(3);
+console.log(arr);
+```
+
+Output:
+
+```
+[1, 2, 3]
+```
+
+### 🔹 pop() → removes last element
+
+```javascript
+arr.pop();
+console.log(arr);
+```
+
+Output:
+
+```
+[1, 2]
+```
+
+### 🔹 unshift() → adds element at beginning
+
+```javascript
+arr.unshift(0);
+console.log(arr);
+```
+
+Output:
+
+```
+[0, 1, 2]
+```
+
+### 🔹 shift() → removes first element
+
+```javascript
+arr.shift();
+console.log(arr);
+```
+
+Output:
+
+```
+[1, 2]
+```
+
+### 🎯 Interview Answer:
+
+> push and unshift add elements, while pop and shift remove elements from arrays.
+
+---
+
+## ✅ 36. **indexOf() (Array)**
+
+### 📘 Notes:
+
+* Returns index of first occurrence of an element.
+* Returns `-1` if not found.
+
+### 🔹 Example:
+
+```javascript
+let nums = [10, 20, 30];
+
+console.log(nums.indexOf(20)); // 1
+console.log(nums.indexOf(50)); // -1
+```
+
+### 🎯 Interview Answer:
+
+> indexOf() searches an element in an array and returns its index position.
+
+---
+
+## ✅ 37. **includes()**
+
+### 📘 Notes:
+
+* Checks whether an array contains a specific value.
+* Returns **true** or **false**.
+
+### 🔹 Example:
+
+```javascript
+let fruits = ["Apple", "Mango"];
+
+console.log(fruits.includes("Mango")); // true
+console.log(fruits.includes("Banana")); // false
+```
+
+### 🎯 Interview Answer:
+
+> includes() checks if a value exists inside an array and returns a boolean result.
+
+---
+
+## ✅ 38. **concat()**
+
+### 📘 Notes:
+
+* Combines two or more arrays.
+* Does **not** change original arrays.
+
+### 🔹 Example:
+
+```javascript
+let a = [1, 2];
+let b = [3, 4];
+
+let result = a.concat(b);
+console.log(result);
+```
+
+Output:
+
+```
+[1, 2, 3, 4]
+```
+
+### 🎯 Interview Answer:
+
+> concat() merges arrays and returns a new combined array.
+
+---
+
+## ✅ 39. **reverse()**
+
+### 📘 Notes:
+
+* Reverses the order of elements.
+* Modifies the original array.
+
+### 🔹 Example:
+
+```javascript
+let nums = [1, 2, 3];
+
+nums.reverse();
+console.log(nums);
+```
+
+Output:
+
+```
+[3, 2, 1]
+```
+
+### 🎯 Interview Answer:
+
+> reverse() changes the order of array elements by reversing them in place.
+
+---
+
+## ✅ 40. **slice() (Array)**
+
+### 📘 Notes:
+
+* Extracts a portion of an array.
+* Does not modify original array.
+
+### 🔹 Syntax:
+
+```javascript
+array.slice(start, end);
+```
+
+### 🔹 Example:
+
+```javascript
+let nums = [1, 2, 3, 4];
+
+console.log(nums.slice(1, 3));
+```
+
+Output:
+
+```
+[2, 3]
+```
+
+### 🎯 Interview Answer:
+
+> slice() returns a shallow copy of a selected portion of an array.
+
+---
+
+## ✅ 41. **splice()**
+
+### 📘 Notes:
+
+* Adds, removes, or replaces elements.
+* Modifies original array.
+
+### 🔹 Syntax:
+
+```javascript
+array.splice(start, deleteCount, newItem);
+```
+
+### 🔹 Example (remove):
+
+```javascript
+let nums = [1, 2, 3, 4];
+
+nums.splice(1, 2);
+console.log(nums);
+```
+
+Output:
+
+```
+[1, 4]
+```
+
+### 🔹 Example (add):
+
+```javascript
+nums.splice(1, 0, 99);
+console.log(nums);
+```
+
+Output:
+
+```
+[1, 99, 4]
+```
+
+### 🎯 Interview Answer:
+
+> splice() modifies an array by adding, removing, or replacing elements at a specific index.
+
+---
+
+# ⭐ JavaScript Interview Revision Summary
+
+* Arrays store multiple values.
+* Arrays are mutable.
+* push/pop work at end.
+* shift/unshift work at beginning.
+* indexOf finds position.
+* includes checks existence.
+* concat merges arrays.
+* reverse changes order.
+* slice copies part of array.
+* splice modifies array structure.
