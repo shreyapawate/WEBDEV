@@ -2088,4 +2088,236 @@ try {
 > try...catch is used to handle runtime errors gracefully without stopping program execution.
 
 ---
+**important JavaScript fundamentals**—commonly asked in placements.
+
+---
+
+## ✅ 59. **Arrow Function**
+
+### 📘 Notes:
+
+* Arrow functions are a shorter way to write functions.
+* Introduced in **ES6**.
+* Uses `=>` syntax.
+
+### 🔹 Syntax:
+
+```javascript
+const greet = () => {
+  console.log("Hello");
+};
+
+greet();
+```
+
+### With Parameters:
+
+```javascript
+const add = (a, b) => {
+  return a + b;
+};
+```
+
+### ✅ Key Points:
+
+* Short syntax.
+* Does not have its own `this`.
+
+### 🎯 Interview Answer:
+
+> Arrow functions provide a concise syntax for writing functions and inherit `this` from their surrounding scope.
+
+---
+
+## ✅ 60. **Implicit Return in Arrow Function**
+
+### 📘 Notes:
+
+* Arrow functions can return values **without using `return`** keyword.
+* Works when function has a single expression.
+
+### 🔹 Example:
+
+```javascript
+const square = num => num * num;
+
+console.log(square(4));
+```
+
+### Multiple Parameters:
+
+```javascript
+const sum = (a, b) => a + b;
+```
+
+### ✅ Key Points:
+
+* No `{}` required.
+* Expression result is returned automatically.
+
+### 🎯 Interview Answer:
+
+> Implicit return allows arrow functions to return values automatically without writing the return keyword.
+
+---
+
+## ✅ 61. **setTimeout() and Uses**
+
+### 📘 Notes:
+
+* Executes code **after a specified delay**.
+* Delay is measured in milliseconds.
+
+### 🔹 Syntax:
+
+```javascript
+setTimeout(function, delay);
+```
+
+### Example:
+
+```javascript
+setTimeout(() => {
+  console.log("Hello after 2 seconds");
+}, 2000);
+```
+
+### Uses:
+
+* Delayed execution
+* Animations
+* API retry logic
+
+### 🎯 Interview Answer:
+
+> setTimeout() executes a function once after a specified time delay.
+
+---
+
+## ✅ 62. **setInterval()**
+
+### 📘 Notes:
+
+* Runs a function **repeatedly** after a fixed interval.
+
+### 🔹 Example:
+
+```javascript
+setInterval(() => {
+  console.log("Running every 2 seconds");
+}, 2000);
+```
+
+### ✅ Key Points:
+
+* Executes continuously.
+* Useful for timers and live updates.
+
+### 🎯 Interview Answer:
+
+> setInterval() repeatedly executes a function after a specified interval of time.
+
+---
+
+## ✅ 63. **clearInterval()**
+
+### 📘 Notes:
+
+* Stops a running interval.
+
+### 🔹 Example:
+
+```javascript
+let id = setInterval(() => {
+  console.log("Hello");
+}, 1000);
+
+clearInterval(id);
+```
+
+### ✅ Key Points:
+
+* Requires interval ID.
+* Prevents infinite execution.
+
+### 🎯 Interview Answer:
+
+> clearInterval() stops a function that was started using setInterval().
+
+---
+
+## ✅ 64. **Difference: `this` in Function vs Arrow Function**
+
+### 📘 Notes:
+
+#### Normal Function:
+
+* `this` depends on **how function is called**.
+
+```javascript
+let user = {
+  name: "Shreya",
+  show: function() {
+    console.log(this.name);
+  }
+};
+```
+
+#### Arrow Function:
+
+* Does **not create its own `this`**.
+* Uses parent's `this`.
+
+```javascript
+let user = {
+  name: "Shreya",
+  show: () => {
+    console.log(this.name);
+  }
+};
+```
+
+### Difference Table:
+
+| Normal Function | Arrow Function |
+|-----------------|---------------|
+| Own `this` | Inherits `this` |
+| Dynamic binding | Lexical binding |
+
+### 🎯 Interview Answer:
+
+> Normal functions have their own this context, while arrow functions inherit this from their surrounding scope.
+
+---
+
+## ✅ 65. **Function to Print "Shreya" After 2 Seconds (Multiple Times)**
+
+### 📘 Notes:
+
+Use `setTimeout()` inside a loop.
+
+### 🔹 Example:
+
+```javascript
+function printName(times) {
+  for (let i = 1; i <= times; i++) {
+    setTimeout(() => {
+      console.log("Shreya");
+    }, 2000 * i);
+  }
+}
+
+printName(3);
+```
+
+### Explanation:
+
+* Prints **Shreya** repeatedly.
+* Each print happens after 2 seconds gap.
+
+### 🎯 Interview Answer:
+
+> We can use setTimeout inside a loop to execute delayed repeated printing.
+
+---
 
