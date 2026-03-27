@@ -1829,4 +1829,263 @@ for (let char of "Hello") {
 
 ---
 
+**important JavaScript fundamentals**—commonly asked in placements.
+
+---
+
+## ✅ 51. **JavaScript Object Literals**
+
+### 📘 Notes:
+
+* Object literals store data in **key–value pairs**.
+* Used to represent real-world entities.
+
+### 🔹 Syntax:
+
+```javascript
+let student = {
+  name: "Shreya",
+  age: 20,
+  city: "Pune"
+};
+```
+
+### Access Values:
+
+```javascript
+console.log(student.name);
+console.log(student["age"]);
+```
+
+### ✅ Key Points:
+
+* Keys are strings.
+* Values can be any data type.
+
+### 🎯 Interview Answer:
+
+> Object literals are collections of key–value pairs used to store structured data in JavaScript.
+
+---
+
+## ✅ 52. **Get Values — Add, Update, Delete**
+
+### 📘 Notes:
+
+Objects allow dynamic modification.
+
+### 🔹 Get Value:
+
+```javascript
+console.log(student.name);
+```
+
+### 🔹 Add Property:
+
+```javascript
+student.grade = "A";
+```
+
+### 🔹 Update Property:
+
+```javascript
+student.age = 21;
+```
+
+### 🔹 Delete Property:
+
+```javascript
+delete student.city;
+```
+
+### ✅ Key Points:
+
+* Objects are mutable.
+* Properties can be modified anytime.
+
+### 🎯 Interview Answer:
+
+> Object properties can be accessed, added, updated, or deleted dynamically using dot or bracket notation.
+
+---
+
+## ✅ 53. **Objects of Objects**
+
+### 📘 Notes:
+
+* Objects can contain other objects as values.
+
+### 🔹 Example:
+
+```javascript
+let classInfo = {
+  student1: { name: "Shreya", age: 20 },
+  student2: { name: "Amit", age: 21 }
+};
+
+console.log(classInfo.student1.name);
+```
+
+### ✅ Key Points:
+
+* Useful for hierarchical data.
+* Access using chained keys.
+
+### 🎯 Interview Answer:
+
+> Objects of objects store nested structured data where each property itself is another object.
+
+---
+
+## ✅ 54. **Array of Objects**
+
+### 📘 Notes:
+
+* Combines arrays and objects.
+* Commonly used in APIs and databases.
+
+### 🔹 Example:
+
+```javascript
+let students = [
+  { name: "Shreya", marks: 90 },
+  { name: "Amit", marks: 85 },
+  { name: "Riya", marks: 88 }
+];
+
+console.log(students[0].name);
+```
+
+### ✅ Key Points:
+
+* Access using index + key.
+* Very common data structure.
+
+### 🎯 Interview Answer:
+
+> An array of objects stores multiple object records inside an array structure.
+
+---
+
+## ✅ 55. **Math Object**
+
+### 📘 Notes:
+
+* JavaScript provides built-in mathematical functions via `Math`.
+
+### 🔹 Common Methods:
+
+```javascript
+Math.PI
+Math.round(4.6)
+Math.floor(4.9)
+Math.ceil(4.1)
+Math.abs(-5)
+Math.pow(2,3)
+Math.sqrt(16)
+```
+
+### ✅ Key Points:
+
+* No need to create Math object.
+* Static methods.
+
+### 🎯 Interview Answer:
+
+> The Math object provides built-in mathematical constants and functions for calculations.
+
+---
+
+## ✅ 56. **Random Integer**
+
+### 📘 Notes:
+
+* `Math.random()` generates numbers between **0 and 1**.
+
+### 🔹 Random Integer Formula:
+
+```javascript
+let num = Math.floor(Math.random() * 10) + 1;
+console.log(num);
+```
+
+### Explanation:
+
+* `Math.random()` → 0 to 0.999
+* Multiply → range scale
+* `Math.floor()` → integer value
+
+### 🎯 Interview Answer:
+
+> Random integers are generated using Math.random() combined with Math.floor() to control the range.
+
+---
+
+## ✅ 57. **this Keyword**
+
+### 📘 Notes:
+
+* `this` refers to the **current object** executing the function.
+
+### 🔹 Example:
+
+```javascript
+let user = {
+  name: "Shreya",
+  greet() {
+    console.log(this.name);
+  }
+};
+
+user.greet();
+```
+
+### Behavior:
+
+* In object → refers to object.
+* In global scope → refers to window (browser).
+
+### 🎯 Interview Answer:
+
+> The this keyword refers to the object that is currently calling the function.
+
+---
+
+## ✅ 58. **try and catch**
+
+### 📘 Notes:
+
+* Used for **error handling**.
+* Prevents program crash.
+
+### 🔹 Syntax:
+
+```javascript
+try {
+  console.log(a);
+} catch (error) {
+  console.log("Error handled");
+}
+```
+
+### Example:
+
+```javascript
+try {
+  let result = 10 / x;
+} catch (err) {
+  console.log(err.message);
+}
+```
+
+### ✅ Key Points:
+
+* `try` → risky code
+* `catch` → handles error
+
+### 🎯 Interview Answer:
+
+> try...catch is used to handle runtime errors gracefully without stopping program execution.
+
+---
 
