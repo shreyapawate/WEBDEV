@@ -2320,4 +2320,242 @@ printName(3);
 > We can use setTimeout inside a loop to execute delayed repeated printing.
 
 ---
+**important JavaScript fundamentals**—commonly asked in placements.
+
+---
+
+## ✅ 66. **Array Methods**
+
+### 📘 Notes:
+
+JavaScript provides powerful built-in array methods for iteration and transformation.
+
+---
+
+### i) **forEach()**
+
+* Executes a function for each array element.
+* Does not return a new array.
+
+```javascript
+let nums = [1, 2, 3];
+
+nums.forEach(function(num) {
+  console.log(num);
+});
+```
+
+✅ Used for side effects like printing or updating UI.
+
+🎯 Interview Answer:
+
+> forEach() executes a callback function once for every array element without returning a new array.
+
+---
+
+### ii) **map()**
+
+* Creates a **new array** after transforming elements.
+
+```javascript
+let nums = [1, 2, 3];
+
+let doubled = nums.map(num => num * 2);
+
+console.log(doubled);
+```
+
+✅ Returns new array.
+
+🎯 Interview Answer:
+
+> map() transforms each element and returns a new array of equal length.
+
+---
+
+### iii) **filter()**
+
+* Returns elements that satisfy a condition.
+
+```javascript
+let nums = [1, 2, 3, 4];
+
+let even = nums.filter(num => num % 2 === 0);
+
+console.log(even);
+```
+
+🎯 Interview Answer:
+
+> filter() creates a new array containing elements that pass a test condition.
+
+---
+
+### iv) **every()**
+
+* Checks if **all elements** satisfy a condition.
+
+```javascript
+let nums = [2, 4, 6];
+
+console.log(nums.every(n => n % 2 === 0));
+```
+
+🎯 Interview Answer:
+
+> every() returns true only if all array elements satisfy the condition.
+
+---
+
+### v) **some()**
+
+* Checks if **at least one element** satisfies condition.
+
+```javascript
+let nums = [1, 3, 4];
+
+console.log(nums.some(n => n % 2 === 0));
+```
+
+🎯 Interview Answer:
+
+> some() returns true if at least one element passes the condition.
+
+---
+
+### vi) **reduce()**
+
+* Reduces array into a single value.
+
+```javascript
+let nums = [1, 2, 3, 4];
+
+let sum = nums.reduce((acc, curr) => acc + curr, 0);
+
+console.log(sum);
+```
+
+Parameters:
+
+* `acc` → accumulator
+* `curr` → current value
+
+🎯 Interview Answer:
+
+> reduce() processes array elements and returns a single accumulated result.
+
+---
+
+## ✅ 67. **Find Maximum Value Using reduce()**
+
+### 📘 Notes:
+
+reduce() can compare values to find maximum.
+
+```javascript
+let nums = [10, 45, 3, 99, 21];
+
+let max = nums.reduce((acc, curr) => {
+  return acc > curr ? acc : curr;
+});
+
+console.log(max);
+```
+
+🎯 Interview Answer:
+
+> reduce() can be used to compare values and compute maximum by accumulating comparisons.
+
+---
+
+## ✅ 68. **Default Parameters (Arguments)**
+
+### 📘 Notes:
+
+Default parameters assign values if arguments are not provided.
+
+```javascript
+function greet(name = "Guest") {
+  console.log(`Hello ${name}`);
+}
+
+greet();
+```
+
+### Output:
+
+```
+Hello Guest
+```
+
+🎯 Interview Answer:
+
+> Default parameters allow functions to use predefined values when arguments are missing.
+
+---
+
+## ✅ 69. **Spread Operator (`...`)**
+
+### 📘 Notes:
+
+Spread operator expands iterable elements.
+
+### Copy Array:
+
+```javascript
+let arr1 = [1, 2, 3];
+let arr2 = [...arr1];
+
+console.log(arr2);
+```
+
+### Merge Arrays:
+
+```javascript
+let a = [1, 2];
+let b = [3, 4];
+
+let merged = [...a, ...b];
+```
+
+🎯 Interview Answer:
+
+> Spread operator expands elements of arrays or iterables into individual values.
+
+---
+
+## ✅ 70. **Spread with Object Literals**
+
+### 📘 Notes:
+
+Used to copy or merge objects.
+
+```javascript
+let user = {
+  name: "Shreya",
+  age: 21
+};
+
+let updatedUser = {
+  ...user,
+  city: "Pune"
+};
+
+console.log(updatedUser);
+```
+
+### Override Values:
+
+```javascript
+let obj1 = { a: 1, b: 2 };
+let obj2 = { ...obj1, b: 5 };
+
+console.log(obj2);
+```
+
+🎯 Interview Answer:
+
+> Spread operator copies or merges object properties into a new object.
+
+---
 
