@@ -2734,4 +2734,190 @@ console.log(country);
 > Object destructuring extracts properties from objects into variables using matching keys.
 
 ---
+**important JavaScript fundamentals**—commonly asked in placements.
 
+---
+
+## ✅ 71. **Rest Operator (`...`)**
+
+### 📘 Notes:
+
+* The **rest operator** (`...`) collects multiple values into a single array.
+* Mainly used in **function parameters**.
+* Opposite of the spread operator.
+* Helps handle unknown number of arguments.
+
+### 🔹 Syntax:
+
+```javascript
+function show(...values) {
+  console.log(values);
+}
+
+show(1, 2, 3, 4);
+```
+
+### Output:
+
+```
+[1, 2, 3, 4]
+```
+
+### Example — Sum Function:
+
+```javascript
+function sum(...nums) {
+  return nums.reduce((a, b) => a + b, 0);
+}
+
+console.log(sum(10, 20, 30));
+```
+
+### Key Points:
+
+* Must always be the **last parameter**.
+* Converts arguments into a real array.
+
+🎯 Interview Answer:
+
+> The rest operator collects multiple arguments into a single array, allowing functions to accept flexible numbers of parameters.
+
+---
+
+## ✅ 72. **Arguments (Not an Array but a Collection)**
+
+### 📘 Notes:
+
+* `arguments` is a special object available inside **regular functions**.
+* Stores all passed arguments automatically.
+* It is **array-like**, not an actual array.
+
+### Example:
+
+```javascript
+function demo() {
+  console.log(arguments);
+}
+
+demo(10, 20, 30);
+```
+
+### Properties:
+
+* Has index positions.
+* Has `length` property.
+* Does NOT support array methods like `map()` or `filter()`.
+
+### Convert into Array:
+
+```javascript
+function convert() {
+  let arr = Array.from(arguments);
+  console.log(arr);
+}
+```
+
+### Important:
+
+❌ Not available in arrow functions.
+
+🎯 Interview Answer:
+
+> The arguments object contains all function parameters but is array-like, meaning it has indexes and length but lacks array methods.
+
+---
+
+## ✅ 73. **Destructuring (Array Destructuring)**
+
+### 📘 Notes:
+
+Destructuring allows extracting values from arrays into variables easily.
+
+### Example:
+
+```javascript
+let colors = ["red", "green", "blue"];
+
+let [first, second, third] = colors;
+
+console.log(first);
+```
+
+### Skipping Elements:
+
+```javascript
+let [a, , c] = colors;
+console.log(c);
+```
+
+### Default Values:
+
+```javascript
+let [x = "default"] = [];
+console.log(x);
+```
+
+### Key Benefits:
+
+* Cleaner syntax.
+* Improves readability.
+* Reduces repetitive code.
+
+🎯 Interview Answer:
+
+> Array destructuring extracts values from arrays into individual variables using concise syntax.
+
+---
+
+## ✅ 74. **Object Destructuring**
+
+### 📘 Notes:
+
+Extract object properties directly into variables.
+
+### Example:
+
+```javascript
+let user = {
+  name: "Shreya",
+  age: 21,
+  city: "Nashik"
+};
+
+let { name, age } = user;
+
+console.log(name);
+```
+
+### Rename Variables:
+
+```javascript
+let { name: username } = user;
+
+console.log(username);
+```
+
+### Default Values:
+
+```javascript
+let { country = "India" } = user;
+console.log(country);
+```
+
+### Key Points:
+
+* Variable names must match object keys.
+* Order does not matter.
+
+🎯 Interview Answer:
+
+> Object destructuring allows extracting object properties into variables using matching property names.
+
+---
+
+# ⭐ JavaScript Interview Revision Summary
+
+* Rest operator gathers multiple parameters into an array.
+* arguments object is array-like but not a real array.
+* Array destructuring simplifies value extraction.
+* Object destructuring extracts properties using keys.
