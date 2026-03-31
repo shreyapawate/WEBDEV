@@ -3262,4 +3262,535 @@ items[0];
 > getElementsByClassName() selects multiple elements sharing the same class and returns an HTMLCollection.
 
 ---
+**important JavaScript fundamentals**—commonly asked in placements.
+
+---
+
+## ✅ 78. **Manipulating Styles in DOM**
+
+JavaScript allows dynamic styling of HTML elements using DOM properties and class manipulation.
+
+---
+
+### 🔹 1. Using `classList`
+
+### 📘 Notes:
+
+* `classList` is used to add, remove, or manage CSS classes.
+* Cleaner and safer than modifying `className`.
+
+### Example:
+
+```javascript
+let box = document.getElementById("box");
+
+box.classList.add("active");
+```
+
+### Key Methods:
+
+```javascript
+element.classList.add("className");
+element.classList.remove("className");
+element.classList.contains("className");
+element.classList.toggle("className");
+```
+
+🎯 Interview Answer:
+
+> classList allows adding, removing, and managing CSS classes dynamically in JavaScript.
+
+---
+
+### 🔹 2. Reset Styles (Remove Class)
+
+### 📘 Notes:
+
+Removing a class resets styles applied by that class.
+
+```javascript
+box.classList.remove("active");
+```
+
+Or remove all classes:
+
+```javascript
+box.className = "";
+```
+
+🎯 Interview Answer:
+
+> Styles can be reset by removing CSS classes using classList.remove().
+
+---
+
+### 🔹 3. Check if Class Exists
+
+### 📘 Notes:
+
+Use `contains()` to verify whether a class is present.
+
+```javascript
+box.classList.contains("active");
+```
+
+Returns:
+
+* `true` → class exists
+* `false` → class not present
+
+🎯 Interview Answer:
+
+> classList.contains() checks whether an element has a specific CSS class.
+
+---
+
+### 🔹 4. Toggle Between Add & Remove
+
+### 📘 Notes:
+
+`toggle()` automatically adds or removes a class.
+
+```javascript
+box.classList.toggle("dark");
+```
+
+If class exists → removed  
+If class not exists → added
+
+🎯 Interview Answer:
+
+> classList.toggle() switches a class on and off automatically.
+
+---
+
+## ✅ 79. **DOM Navigation**
+
+DOM navigation helps move between related elements.
+
+---
+
+### 🔹 1. Parent Element
+
+### 📘 Notes:
+
+Access parent node of an element.
+
+```javascript
+element.parentElement;
+```
+
+Example:
+
+```javascript
+let child = document.querySelector("p");
+console.log(child.parentElement);
+```
+
+🎯 Interview Answer:
+
+> parentElement returns the immediate parent of an HTML element.
+
+---
+
+### 🔹 2. Children Elements
+
+### 📘 Notes:
+
+Access child elements inside a parent.
+
+```javascript
+element.children;
+```
+
+Example:
+
+```javascript
+let list = document.querySelector("ul");
+console.log(list.children);
+```
+
+🎯 Interview Answer:
+
+> children property returns all child elements of a selected parent element.
+
+---
+
+### 🔹 3. Previous & Next Element Siblings
+
+### 📘 Notes:
+
+Access elements beside the current element.
+
+```javascript
+element.previousElementSibling;
+element.nextElementSibling;
+```
+
+Example:
+
+```javascript
+let item = document.querySelector(".item");
+console.log(item.nextElementSibling);
+```
+
+🎯 Interview Answer:
+
+> previousElementSibling and nextElementSibling help navigate between adjacent elements in DOM.
+
+---
+
+## ✅ 80. **Adding Elements in DOM**
+
+JavaScript can dynamically create and insert elements.
+
+---
+
+### 🔹 1. `appendChild()`
+
+### 📘 Notes:
+
+Adds a new child at the end of a parent element.
+
+```javascript
+let newEl = document.createElement("p");
+newEl.innerText = "Hello";
+
+document.body.appendChild(newEl);
+```
+
+🎯 Interview Answer:
+
+> appendChild() adds a node as the last child of a parent element.
+
+---
+
+### 🔹 2. `append()` Function
+
+### 📘 Notes:
+
+More flexible than appendChild.
+
+* Can add text or elements.
+* Can add multiple items.
+
+```javascript
+element.append("Text");
+element.append(newEl);
+```
+
+🎯 Interview Answer:
+
+> append() inserts content at the end of an element and supports both nodes and text.
+
+---
+
+### 🔹 3. `prepend()`
+
+### 📘 Notes:
+
+Adds element at the beginning.
+
+```javascript
+element.prepend(newEl);
+```
+
+🎯 Interview Answer:
+
+> prepend() inserts content at the start of a parent element.
+
+---
+
+### 🔹 4. `insertAdjacentElement(position, element)`
+
+### 📘 Notes:
+
+Inserts element relative to another element.
+
+### Positions:
+
+| Position | Meaning |
+|----------|---------|
+| beforebegin | before element |
+| afterbegin | inside start |
+| beforeend | inside end |
+| afterend | after element |
+
+### Example:
+
+```javascript
+element.insertAdjacentElement("beforebegin", newEl);
+```
+
+🎯 Interview Answer:
+
+> insertAdjacentElement() inserts an element at a specified position relative to another element.
+
+---
+
+**important JavaScript fundamentals**—commonly asked in placements.
+
+---
+
+## ✅ 78. **Manipulating Styles in DOM**
+
+JavaScript allows dynamic styling of HTML elements using DOM properties and class manipulation.
+
+---
+
+### 🔹 1. Using `classList`
+
+### 📘 Notes:
+
+* `classList` is used to add, remove, or manage CSS classes.
+* Cleaner and safer than modifying `className`.
+
+### Example:
+
+```javascript
+let box = document.getElementById("box");
+
+box.classList.add("active");
+```
+
+### Key Methods:
+
+```javascript
+element.classList.add("className");
+element.classList.remove("className");
+element.classList.contains("className");
+element.classList.toggle("className");
+```
+
+🎯 Interview Answer:
+
+> classList allows adding, removing, and managing CSS classes dynamically in JavaScript.
+
+---
+
+### 🔹 2. Reset Styles (Remove Class)
+
+### 📘 Notes:
+
+Removing a class resets styles applied by that class.
+
+```javascript
+box.classList.remove("active");
+```
+
+Or remove all classes:
+
+```javascript
+box.className = "";
+```
+
+🎯 Interview Answer:
+
+> Styles can be reset by removing CSS classes using classList.remove().
+
+---
+
+### 🔹 3. Check if Class Exists
+
+### 📘 Notes:
+
+Use `contains()` to verify whether a class is present.
+
+```javascript
+box.classList.contains("active");
+```
+
+Returns:
+
+* `true` → class exists
+* `false` → class not present
+
+🎯 Interview Answer:
+
+> classList.contains() checks whether an element has a specific CSS class.
+
+---
+
+### 🔹 4. Toggle Between Add & Remove
+
+### 📘 Notes:
+
+`toggle()` automatically adds or removes a class.
+
+```javascript
+box.classList.toggle("dark");
+```
+
+If class exists → removed  
+If class not exists → added
+
+🎯 Interview Answer:
+
+> classList.toggle() switches a class on and off automatically.
+
+---
+
+## ✅ 79. **DOM Navigation**
+
+DOM navigation helps move between related elements.
+
+---
+
+### 🔹 1. Parent Element
+
+### 📘 Notes:
+
+Access parent node of an element.
+
+```javascript
+element.parentElement;
+```
+
+Example:
+
+```javascript
+let child = document.querySelector("p");
+console.log(child.parentElement);
+```
+
+🎯 Interview Answer:
+
+> parentElement returns the immediate parent of an HTML element.
+
+---
+
+### 🔹 2. Children Elements
+
+### 📘 Notes:
+
+Access child elements inside a parent.
+
+```javascript
+element.children;
+```
+
+Example:
+
+```javascript
+let list = document.querySelector("ul");
+console.log(list.children);
+```
+
+🎯 Interview Answer:
+
+> children property returns all child elements of a selected parent element.
+
+---
+
+### 🔹 3. Previous & Next Element Siblings
+
+### 📘 Notes:
+
+Access elements beside the current element.
+
+```javascript
+element.previousElementSibling;
+element.nextElementSibling;
+```
+
+Example:
+
+```javascript
+let item = document.querySelector(".item");
+console.log(item.nextElementSibling);
+```
+
+🎯 Interview Answer:
+
+> previousElementSibling and nextElementSibling help navigate between adjacent elements in DOM.
+
+---
+
+## ✅ 80. **Adding Elements in DOM**
+
+JavaScript can dynamically create and insert elements.
+
+---
+
+### 🔹 1. `appendChild()`
+
+### 📘 Notes:
+
+Adds a new child at the end of a parent element.
+
+```javascript
+let newEl = document.createElement("p");
+newEl.innerText = "Hello";
+
+document.body.appendChild(newEl);
+```
+
+🎯 Interview Answer:
+
+> appendChild() adds a node as the last child of a parent element.
+
+---
+
+### 🔹 2. `append()` Function
+
+### 📘 Notes:
+
+More flexible than appendChild.
+
+* Can add text or elements.
+* Can add multiple items.
+
+```javascript
+element.append("Text");
+element.append(newEl);
+```
+
+🎯 Interview Answer:
+
+> append() inserts content at the end of an element and supports both nodes and text.
+
+---
+
+### 🔹 3. `prepend()`
+
+### 📘 Notes:
+
+Adds element at the beginning.
+
+```javascript
+element.prepend(newEl);
+```
+
+🎯 Interview Answer:
+
+> prepend() inserts content at the start of a parent element.
+
+---
+
+### 🔹 4. `insertAdjacentElement(position, element)`
+
+### 📘 Notes:
+
+Inserts element relative to another element.
+
+### Positions:
+
+| Position | Meaning |
+|----------|---------|
+| beforebegin | before element |
+| afterbegin | inside start |
+| beforeend | inside end |
+| afterend | after element |
+
+### Example:
+
+```javascript
+element.insertAdjacentElement("beforebegin", newEl);
+```
+
+🎯 Interview Answer:
+
+> insertAdjacentElement() inserts an element at a specified position relative to another element.
+
+---
 
