@@ -2914,10 +2914,179 @@ console.log(country);
 > Object destructuring allows extracting object properties into variables using matching property names.
 
 ---
+**important JavaScript fundamentals**—commonly asked in placements.
 
-# ⭐ JavaScript Interview Revision Summary
+---
 
-* Rest operator gathers multiple parameters into an array.
-* arguments object is array-like but not a real array.
-* Array destructuring simplifies value extraction.
-* Object destructuring extracts properties using keys.
+## ✅ 75. **Document Object Model (DOM)**
+
+### 📘 Notes:
+
+* The **Document Object Model (DOM)** is a programming interface for web documents.
+* It represents the HTML structure as a **tree of objects**.
+* JavaScript can use the DOM to **access**, **modify**, **add**, or **delete** HTML elements dynamically.
+
+### Example HTML:
+
+```html
+<body>
+  <h1>Hello</h1>
+</body>
+```
+
+DOM Representation:
+
+```
+Document
+ └── html
+      └── body
+            └── h1
+```
+
+### What DOM Allows:
+
+* Change content
+* Change styles
+* Handle events
+* Create/remove elements
+
+### Key Points:
+
+* Browser automatically creates DOM when page loads.
+* Each HTML tag becomes a DOM node.
+* JavaScript interacts with webpage using DOM APIs.
+
+🎯 Interview Answer:
+
+> The DOM is a tree-like representation of an HTML document that allows JavaScript to dynamically access and manipulate webpage elements.
+
+---
+
+## ✅ 76. **Printing the Document Object**
+
+### 📘 Notes:
+
+* The entire webpage is represented by the **document object**.
+* We can print it inside the browser console.
+
+### Example:
+
+```javascript
+console.log(document);
+```
+
+### Output:
+
+* Shows complete HTML structure.
+* Helps inspect elements programmatically.
+
+### Useful Properties:
+
+```javascript
+document.title
+document.body
+document.head
+document.URL
+```
+
+### Example:
+
+```javascript
+console.log(document.title);
+```
+
+### Key Points:
+
+* `document` is the root object of DOM.
+* Available automatically in browsers.
+
+🎯 Interview Answer:
+
+> The document object represents the entire webpage, and console.log(document) prints the DOM structure for inspection and debugging.
+
+---
+
+## ✅ 77. **Selecting Elements in DOM**
+
+Selecting elements means accessing HTML elements using JavaScript.
+
+---
+
+### 🔹 1. `getElementById()`
+
+### 📘 Notes:
+
+* Selects an element using its **id** attribute.
+* IDs must be unique.
+
+### Syntax:
+
+```javascript
+document.getElementById("idName");
+```
+
+### Example:
+
+```html
+<h1 id="title">Hello</h1>
+```
+
+```javascript
+let heading = document.getElementById("title");
+console.log(heading);
+```
+
+### Key Points:
+
+* Returns a single element.
+* Fast and commonly used.
+
+🎯 Interview Answer:
+
+> getElementById() selects a unique HTML element using its id attribute.
+
+---
+
+### 🔹 2. `getElementsByClassName()`
+
+### 📘 Notes:
+
+* Selects elements using class name.
+* Returns an **HTMLCollection** (array-like object).
+
+### Syntax:
+
+```javascript
+document.getElementsByClassName("className");
+```
+
+### Example:
+
+```html
+<p class="text">One</p>
+<p class="text">Two</p>
+```
+
+```javascript
+let items = document.getElementsByClassName("text");
+console.log(items);
+```
+
+### Access Individual Element:
+
+```javascript
+items[0];
+```
+
+### Key Points:
+
+* Multiple elements can share same class.
+* Result is not a real array.
+
+🎯 Interview Answer:
+
+> getElementsByClassName() selects multiple elements sharing the same class and returns an HTMLCollection.
+
+---
+
+
