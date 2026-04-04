@@ -3794,3 +3794,245 @@ element.insertAdjacentElement("beforebegin", newEl);
 
 ---
 
+**important JavaScript fundamentals**—commonly asked in placements.
+
+---
+
+## ✅ 81. **Removing Elements (DOM)**
+
+JavaScript allows removing HTML elements dynamically from the webpage.
+
+### 📘 Notes:
+
+Elements can be removed using DOM methods.
+
+### 🔹 `remove()` Method
+
+Removes the selected element directly.
+
+```javascript
+let para = document.querySelector("p");
+para.remove();
+```
+
+### 🔹 `removeChild()` Method
+
+Removes a child from a parent element.
+
+```javascript
+let parent = document.querySelector("ul");
+let child = document.querySelector("li");
+
+parent.removeChild(child);
+```
+
+### 🎯 Interview Answer:
+
+> Elements can be removed from the DOM using remove() or removeChild() methods.
+
+---
+
+## ✅ 82. **DOM Events**
+
+Events are actions performed by users or browsers such as clicking, typing, or hovering.
+
+---
+
+### 🔹 1. `onclick` Event
+
+Triggered when an element is clicked.
+
+```html
+<button onclick="sayHello()">Click</button>
+```
+
+```javascript
+function sayHello() {
+  console.log("Button Clicked");
+}
+```
+
+🎯 Interview Answer:
+
+> onclick event executes JavaScript code when a user clicks an element.
+
+---
+
+### 🔹 2. `onmouseenter` Event
+
+Triggered when mouse pointer enters an element.
+
+```javascript
+let box = document.querySelector(".box");
+
+box.onmouseenter = function () {
+  console.log("Mouse entered");
+};
+```
+
+🎯 Interview Answer:
+
+> onmouseenter runs when the mouse pointer moves over an element.
+
+---
+
+## ✅ 83. **Event Listeners**
+
+Event listeners attach events using JavaScript instead of HTML attributes.
+
+### 📘 Notes:
+
+Preferred modern method for handling events.
+
+### Syntax:
+
+```javascript
+element.addEventListener("event", function);
+```
+
+### Example:
+
+```javascript
+let btn = document.querySelector("button");
+
+btn.addEventListener("click", function () {
+  console.log("Button clicked");
+});
+```
+
+### Advantages:
+
+* Multiple events can be added.
+* Cleaner code separation.
+
+🎯 Interview Answer:
+
+> addEventListener() attaches event handlers dynamically and allows multiple listeners on the same element.
+
+---
+
+## ✅ 84. **`this` in Event Listeners**
+
+### 📘 Notes:
+
+Inside an event listener, `this` refers to the element that triggered the event.
+
+### Example:
+
+```javascript
+let btn = document.querySelector("button");
+
+btn.addEventListener("click", function () {
+  console.log(this);
+});
+```
+
+Here, `this` = button element.
+
+⚠️ Arrow functions behave differently (they do not bind `this`).
+
+```javascript
+btn.addEventListener("click", () => {
+  console.log(this); // not button
+});
+```
+
+🎯 Interview Answer:
+
+> In event listeners, this refers to the element receiving the event when using a normal function.
+
+---
+
+## ✅ 85. **Keyboard Events**
+
+Keyboard events occur when keys are pressed or released.
+
+### Common Keyboard Events:
+
+| Event | Description |
+|------|-------------|
+| keydown | key pressed |
+| keyup | key released |
+| keypress | key typed |
+
+### Example:
+
+```javascript
+document.addEventListener("keydown", function (event) {
+  console.log(event.key);
+});
+```
+
+🎯 Interview Answer:
+
+> Keyboard events detect user key actions using events like keydown and keyup.
+
+---
+
+## ✅ 86. **Event Bubbling**
+
+### 📘 Notes:
+
+Event bubbling means events propagate from child → parent elements.
+
+### Example:
+
+```javascript
+document.querySelector("div").addEventListener("click", () => {
+  console.log("DIV clicked");
+});
+
+document.querySelector("button").addEventListener("click", () => {
+  console.log("Button clicked");
+});
+```
+
+Clicking button prints:
+
+```
+Button clicked
+DIV clicked
+```
+
+### Stop Bubbling:
+
+```javascript
+event.stopPropagation();
+```
+
+🎯 Interview Answer:
+
+> Event bubbling is the process where an event moves upward through parent elements in the DOM hierarchy.
+
+---
+
+## ✅ 87. **Event Delegation**
+
+### 📘 Notes:
+
+Event delegation attaches a single event listener to a parent instead of multiple children.
+
+Useful for dynamically added elements.
+
+### Example:
+
+```javascript
+document.querySelector("ul").addEventListener("click", function (event) {
+  if (event.target.tagName === "LI") {
+    console.log("List item clicked");
+  }
+});
+```
+
+### Advantages:
+
+* Better performance
+* Handles dynamic elements
+* Less memory usage
+
+🎯 Interview Answer:
+
+> Event delegation uses event bubbling to handle events at a parent level instead of adding listeners to multiple child elements.
+
+---
+
