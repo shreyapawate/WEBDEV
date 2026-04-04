@@ -4563,3 +4563,183 @@ fetch("https://api.example.com/data")
 
 ---
 
+**important JavaScript fundamentals**—commonly asked in placements.
+
+---
+
+## ✅ 95. **Promise Chaining**
+
+### 📘 Notes:
+
+* Promise chaining allows multiple asynchronous operations to run **sequentially**.
+* Each `.then()` returns a new promise.
+* Helps avoid callback hell.
+
+### Example:
+
+```javascript
+fetch("https://api.example.com/user")
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(data);
+    return data.id;
+  })
+  .then((id) => {
+    console.log("User ID:", id);
+  })
+  .catch((err) => console.log(err));
+```
+
+### Key Points:
+
+* Output of one `.then()` becomes input of next.
+* Improves readability.
+
+🎯 Interview Answer:
+
+> Promise chaining executes multiple asynchronous tasks sequentially using consecutive `.then()` methods.
+
+---
+
+## ✅ 96. **Promise Resolved and Rejected using `.then()` and `.catch()`**
+
+### 📘 Notes:
+
+Promises handle success and failure separately.
+
+* `.then()` → runs when promise is **resolved**
+* `.catch()` → runs when promise is **rejected**
+
+### Example:
+
+```javascript
+let promise = new Promise((resolve, reject) => {
+  let success = false;
+
+  if (success) {
+    resolve("Success");
+  } else {
+    reject("Error occurred");
+  }
+});
+
+promise
+  .then((msg) => console.log(msg))
+  .catch((err) => console.log(err));
+```
+
+### Flow:
+
+```
+resolve → then()
+reject  → catch()
+```
+
+🎯 Interview Answer:
+
+> `.then()` handles successful promise results while `.catch()` handles errors or rejected promises.
+
+---
+
+## ✅ 97. **Asynchronous Function (async function)**
+
+### 📘 Notes:
+
+* `async` keyword makes a function asynchronous.
+* Always returns a **Promise** automatically.
+* Allows use of `await` inside function.
+
+### Syntax:
+
+```javascript
+async function greet() {
+  return "Hello";
+}
+```
+
+Equivalent to:
+
+```javascript
+function greet() {
+  return Promise.resolve("Hello");
+}
+```
+
+### Example:
+
+```javascript
+async function example() {
+  console.log("Async function");
+}
+```
+
+🎯 Interview Answer:
+
+> An async function simplifies asynchronous programming and always returns a promise.
+
+---
+
+## ✅ 98. **await Keyword**
+
+### 📘 Notes:
+
+* `await` pauses execution until a promise resolves.
+* Can only be used inside `async` functions.
+* Makes async code look synchronous.
+
+### Example:
+
+```javascript
+async function getData() {
+  let response = await fetch("https://api.example.com/data");
+  let data = await response.json();
+  console.log(data);
+}
+
+getData();
+```
+
+### Key Points:
+
+* Waits for promise completion.
+* Improves readability.
+
+🎯 Interview Answer:
+
+> The await keyword pauses async function execution until a promise resolves and returns its result.
+
+---
+
+## ✅ 99. **Handling Rejection with await**
+
+### 📘 Notes:
+
+Errors in async/await are handled using **try...catch**.
+
+### Example:
+
+```javascript
+async function fetchData() {
+  try {
+    let response = await fetch("https://wrong-url.com");
+    let data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.log("Error:", error);
+  }
+}
+
+fetchData();
+```
+
+### Why Needed?
+
+* Prevents program crash.
+* Handles rejected promises safely.
+
+🎯 Interview Answer:
+
+> Promise rejections in async/await are handled using try...catch blocks for proper error management.
+
+---
+
