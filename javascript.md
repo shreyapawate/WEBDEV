@@ -4742,4 +4742,281 @@ fetchData();
 > Promise rejections in async/await are handled using try...catch blocks for proper error management.
 
 ---
+**important JavaScript fundamentals**—commonly asked in placements.
+
+---
+
+## ✅ 100. **What is API**
+
+### 📘 Notes:
+
+* API stands for **Application Programming Interface**.
+* It allows two applications to communicate with each other.
+* APIs are commonly used to fetch data from servers.
+
+### Example:
+
+```javascript
+fetch("https://api.example.com/users")
+  .then(res => res.json())
+  .then(data => console.log(data));
+```
+
+### Real-Life Example:
+
+* Weather app → gets data from weather API.
+* Payment apps → use banking APIs.
+
+🎯 Interview Answer:
+
+> An API is a bridge that allows different software applications to communicate and exchange data.
+
+---
+
+## ✅ 101. **JSON (JavaScript Object Notation)**
+
+### 📘 Notes:
+
+* JSON is a lightweight data format.
+* Used for storing and transferring data.
+* Written as key–value pairs.
+* Keys must be in double quotes.
+
+### Example JSON:
+
+```json
+{
+  "name": "Shreya",
+  "age": 21,
+  "city": "Pune"
+}
+```
+
+### Key Points:
+
+* Easy to read and write.
+* Supported by almost all programming languages.
+
+🎯 Interview Answer:
+
+> JSON is a lightweight data-interchange format used to send and receive data between server and client.
+
+---
+
+## ✅ 102. **Accessing Data from JSON using `parse()` and `stringify()`**
+
+### 📘 Notes:
+
+JavaScript provides two important JSON methods.
+
+### 1️⃣ JSON.parse()
+
+Converts JSON string → JavaScript object.
+
+```javascript
+let jsonData = '{"name":"Shreya","age":21}';
+
+let obj = JSON.parse(jsonData);
+console.log(obj.name);
+```
+
+### 2️⃣ JSON.stringify()
+
+Converts JavaScript object → JSON string.
+
+```javascript
+let user = { name: "Shreya", age: 21 };
+
+let jsonString = JSON.stringify(user);
+console.log(jsonString);
+```
+
+### Key Difference:
+
+| Method | Purpose |
+|------|------|
+| parse() | JSON → Object |
+| stringify() | Object → JSON |
+
+🎯 Interview Answer:
+
+> JSON.parse converts JSON strings into JavaScript objects, while JSON.stringify converts objects into JSON format.
+
+---
+
+## ✅ 103. **Testing APIs using Hoppscotch and Postman**
+
+### 📘 Notes:
+
+API testing tools help developers test requests without writing code.
+
+### 🔹 Hoppscotch
+
+* Browser-based API testing tool.
+* Lightweight and fast.
+* No installation required.
+
+### 🔹 Postman
+
+* Popular API testing software.
+* Supports GET, POST, PUT, DELETE requests.
+* Used widely in industry.
+
+### Example Steps:
+
+1. Enter API URL.
+2. Select request type (GET/POST).
+3. Click Send.
+4. View response data.
+
+### Key Uses:
+
+* Test backend APIs.
+* Debug responses.
+* Verify server data.
+
+🎯 Interview Answer:
+
+> Hoppscotch and Postman are tools used to send HTTP requests and test APIs by checking server responses.
+
+---
+
+**important JavaScript fundamentals**—commonly asked in placements.
+
+---
+
+## ✅ 100. **What is API**
+
+### 📘 Notes:
+
+* API stands for **Application Programming Interface**.
+* It allows two applications to communicate with each other.
+* APIs are commonly used to fetch data from servers.
+
+### Example:
+
+```javascript
+fetch("https://api.example.com/users")
+  .then(res => res.json())
+  .then(data => console.log(data));
+```
+
+### Real-Life Example:
+
+* Weather app → gets data from weather API.
+* Payment apps → use banking APIs.
+
+🎯 Interview Answer:
+
+> An API is a bridge that allows different software applications to communicate and exchange data.
+
+---
+
+## ✅ 101. **JSON (JavaScript Object Notation)**
+
+### 📘 Notes:
+
+* JSON is a lightweight data format.
+* Used for storing and transferring data.
+* Written as key–value pairs.
+* Keys must be in double quotes.
+
+### Example JSON:
+
+```json
+{
+  "name": "Shreya",
+  "age": 21,
+  "city": "Pune"
+}
+```
+
+### Key Points:
+
+* Easy to read and write.
+* Supported by almost all programming languages.
+
+🎯 Interview Answer:
+
+> JSON is a lightweight data-interchange format used to send and receive data between server and client.
+
+---
+
+## ✅ 102. **Accessing Data from JSON using `parse()` and `stringify()`**
+
+### 📘 Notes:
+
+JavaScript provides two important JSON methods.
+
+### 1️⃣ JSON.parse()
+
+Converts JSON string → JavaScript object.
+
+```javascript
+let jsonData = '{"name":"Shreya","age":21}';
+
+let obj = JSON.parse(jsonData);
+console.log(obj.name);
+```
+
+### 2️⃣ JSON.stringify()
+
+Converts JavaScript object → JSON string.
+
+```javascript
+let user = { name: "Shreya", age: 21 };
+
+let jsonString = JSON.stringify(user);
+console.log(jsonString);
+```
+
+### Key Difference:
+
+| Method | Purpose |
+|------|------|
+| parse() | JSON → Object |
+| stringify() | Object → JSON |
+
+🎯 Interview Answer:
+
+> JSON.parse converts JSON strings into JavaScript objects, while JSON.stringify converts objects into JSON format.
+
+---
+
+## ✅ 103. **Testing APIs using Hoppscotch and Postman**
+
+### 📘 Notes:
+
+API testing tools help developers test requests without writing code.
+
+### 🔹 Hoppscotch
+
+* Browser-based API testing tool.
+* Lightweight and fast.
+* No installation required.
+
+### 🔹 Postman
+
+* Popular API testing software.
+* Supports GET, POST, PUT, DELETE requests.
+* Used widely in industry.
+
+### Example Steps:
+
+1. Enter API URL.
+2. Select request type (GET/POST).
+3. Click Send.
+4. View response data.
+
+### Key Uses:
+
+* Test backend APIs.
+* Debug responses.
+* Verify server data.
+
+🎯 Interview Answer:
+
+> Hoppscotch and Postman are tools used to send HTTP requests and test APIs by checking server responses.
+
+---
 
