@@ -4035,4 +4035,531 @@ document.querySelector("ul").addEventListener("click", function (event) {
 > Event delegation uses event bubbling to handle events at a parent level instead of adding listeners to multiple child elements.
 
 ---
+**important JavaScript fundamentals**—commonly asked in placements.
+
+---
+
+## ✅ 88. **Call Stack**
+
+### 📘 Notes:
+
+* The **call stack** is a data structure used by JavaScript to keep track of function execution.
+* It follows **LIFO (Last In First Out)** principle.
+* When a function is called → pushed into stack.
+* When execution finishes → removed from stack.
+
+### Example:
+
+```javascript
+function one() {
+  two();
+}
+
+function two() {
+  console.log("Hello");
+}
+
+one();
+```
+
+Execution Order in Stack:
+
+```
+one() → two() → console.log()
+```
+
+### Stack Overflow:
+
+Occurs when too many function calls happen without stopping (infinite recursion).
+
+🎯 Interview Answer:
+
+> The call stack is a mechanism that tracks function execution order using a Last In First Out structure.
+
+---
+
+## ✅ 89. **Breakpoints**
+
+### 📘 Notes:
+
+* Breakpoints are used in browser developer tools for debugging.
+* They pause JavaScript execution at a specific line.
+* Helps inspect variables and program flow.
+
+### How to Use:
+
+1. Open DevTools → Sources tab.
+2. Click line number.
+3. Code pauses during execution.
+
+### Using `debugger` keyword:
+
+```javascript
+let x = 10;
+debugger;
+console.log(x);
+```
+
+🎯 Interview Answer:
+
+> Breakpoints pause program execution to help developers debug and inspect code behavior.
+
+---
+
+## ✅ 90. **JavaScript is Single-Threaded**
+
+### 📘 Notes:
+
+* JavaScript runs on **one main thread**.
+* Executes **one task at a time**.
+* Uses **call stack** for execution.
+
+Example:
+
+```javascript
+console.log("A");
+console.log("B");
+console.log("C");
+```
+
+Output:
+
+```
+A
+B
+C
+```
+
+### Why Important?
+
+Prevents race conditions but requires async handling for long tasks.
+
+🎯 Interview Answer:
+
+> JavaScript is single-threaded because it executes one instruction at a time using a single call stack.
+
+---
+
+## ✅ 91. **Asynchronous Behaviour of JavaScript**
+
+### 📘 Notes:
+
+Even though JS is single-threaded, it handles async tasks using:
+
+* Web APIs
+* Callback Queue
+* Event Loop
+
+### Example:
+
+```javascript
+console.log("Start");
+
+setTimeout(() => {
+  console.log("Async Task");
+}, 2000);
+
+console.log("End");
+```
+
+Output:
+
+```
+Start
+End
+Async Task
+```
+
+### Flow:
+
+1. Async task goes to Web API.
+2. Moves to callback queue.
+3. Event loop pushes it to call stack when free.
+
+🎯 Interview Answer:
+
+> JavaScript handles asynchronous operations using the event loop, allowing non-blocking execution despite being single-threaded.
+
+---
+
+## ✅ 92. **Callback Hell**
+
+### 📘 Notes:
+
+Callback hell happens when multiple nested callbacks make code hard to read and maintain.
+
+### Example:
+
+```javascript
+setTimeout(() => {
+  console.log("Step 1");
+
+  setTimeout(() => {
+    console.log("Step 2");
+
+    setTimeout(() => {
+      console.log("Step 3");
+    }, 1000);
+
+  }, 1000);
+
+}, 1000);
+```
+
+Problems:
+
+* Hard to read
+* Difficult debugging
+* Poor maintainability
+
+### Solution:
+
+* Promises
+* Async/Await
+
+🎯 Interview Answer:
+
+> Callback hell refers to deeply nested callbacks that reduce code readability and are solved using promises or async/await.
+
+---
+
+## ✅ 93. **Promises — Resolve & Reject**
+
+### 📘 Notes:
+
+A **Promise** represents a future result of an asynchronous operation.
+
+### States:
+
+| State | Meaning |
+|------|---------|
+| Pending | initial state |
+| Fulfilled | resolved successfully |
+| Rejected | error occurred |
+
+### Creating Promise:
+
+```javascript
+let promise = new Promise((resolve, reject) => {
+  let success = true;
+
+  if (success) {
+    resolve("Task completed");
+  } else {
+    reject("Task failed");
+  }
+});
+```
+
+### Using Promise:
+
+```javascript
+promise
+  .then((result) => console.log(result))
+  .catch((error) => console.log(error));
+```
+
+🎯 Interview Answer:
+
+> A Promise handles asynchronous operations with resolve for success and reject for failure.
+
+---
+
+## ✅ 94. **Request Using `.then()`**
+
+### 📘 Notes:
+
+`.then()` executes when a promise is resolved.
+
+Commonly used for API requests.
+
+### Example:
+
+```javascript
+fetch("https://api.example.com/data")
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+```
+
+### Flow:
+
+1. Request sent.
+2. Promise returned.
+3. `.then()` handles success.
+4. `.catch()` handles error.
+
+🎯 Interview Answer:
+
+> The .then() method is used to handle successful promise results, commonly used in API requests.
+
+---
+
+**important JavaScript fundamentals**—commonly asked in placements.
+
+---
+
+## ✅ 88. **Call Stack**
+
+### 📘 Notes:
+
+* The **call stack** is a data structure used by JavaScript to keep track of function execution.
+* It follows **LIFO (Last In First Out)** principle.
+* When a function is called → pushed into stack.
+* When execution finishes → removed from stack.
+
+### Example:
+
+```javascript
+function one() {
+  two();
+}
+
+function two() {
+  console.log("Hello");
+}
+
+one();
+```
+
+Execution Order in Stack:
+
+```
+one() → two() → console.log()
+```
+
+### Stack Overflow:
+
+Occurs when too many function calls happen without stopping (infinite recursion).
+
+🎯 Interview Answer:
+
+> The call stack is a mechanism that tracks function execution order using a Last In First Out structure.
+
+---
+
+## ✅ 89. **Breakpoints**
+
+### 📘 Notes:
+
+* Breakpoints are used in browser developer tools for debugging.
+* They pause JavaScript execution at a specific line.
+* Helps inspect variables and program flow.
+
+### How to Use:
+
+1. Open DevTools → Sources tab.
+2. Click line number.
+3. Code pauses during execution.
+
+### Using `debugger` keyword:
+
+```javascript
+let x = 10;
+debugger;
+console.log(x);
+```
+
+🎯 Interview Answer:
+
+> Breakpoints pause program execution to help developers debug and inspect code behavior.
+
+---
+
+## ✅ 90. **JavaScript is Single-Threaded**
+
+### 📘 Notes:
+
+* JavaScript runs on **one main thread**.
+* Executes **one task at a time**.
+* Uses **call stack** for execution.
+
+Example:
+
+```javascript
+console.log("A");
+console.log("B");
+console.log("C");
+```
+
+Output:
+
+```
+A
+B
+C
+```
+
+### Why Important?
+
+Prevents race conditions but requires async handling for long tasks.
+
+🎯 Interview Answer:
+
+> JavaScript is single-threaded because it executes one instruction at a time using a single call stack.
+
+---
+
+## ✅ 91. **Asynchronous Behaviour of JavaScript**
+
+### 📘 Notes:
+
+Even though JS is single-threaded, it handles async tasks using:
+
+* Web APIs
+* Callback Queue
+* Event Loop
+
+### Example:
+
+```javascript
+console.log("Start");
+
+setTimeout(() => {
+  console.log("Async Task");
+}, 2000);
+
+console.log("End");
+```
+
+Output:
+
+```
+Start
+End
+Async Task
+```
+
+### Flow:
+
+1. Async task goes to Web API.
+2. Moves to callback queue.
+3. Event loop pushes it to call stack when free.
+
+🎯 Interview Answer:
+
+> JavaScript handles asynchronous operations using the event loop, allowing non-blocking execution despite being single-threaded.
+
+---
+
+## ✅ 92. **Callback Hell**
+
+### 📘 Notes:
+
+Callback hell happens when multiple nested callbacks make code hard to read and maintain.
+
+### Example:
+
+```javascript
+setTimeout(() => {
+  console.log("Step 1");
+
+  setTimeout(() => {
+    console.log("Step 2");
+
+    setTimeout(() => {
+      console.log("Step 3");
+    }, 1000);
+
+  }, 1000);
+
+}, 1000);
+```
+
+Problems:
+
+* Hard to read
+* Difficult debugging
+* Poor maintainability
+
+### Solution:
+
+* Promises
+* Async/Await
+
+🎯 Interview Answer:
+
+> Callback hell refers to deeply nested callbacks that reduce code readability and are solved using promises or async/await.
+
+---
+
+## ✅ 93. **Promises — Resolve & Reject**
+
+### 📘 Notes:
+
+A **Promise** represents a future result of an asynchronous operation.
+
+### States:
+
+| State | Meaning |
+|------|---------|
+| Pending | initial state |
+| Fulfilled | resolved successfully |
+| Rejected | error occurred |
+
+### Creating Promise:
+
+```javascript
+let promise = new Promise((resolve, reject) => {
+  let success = true;
+
+  if (success) {
+    resolve("Task completed");
+  } else {
+    reject("Task failed");
+  }
+});
+```
+
+### Using Promise:
+
+```javascript
+promise
+  .then((result) => console.log(result))
+  .catch((error) => console.log(error));
+```
+
+🎯 Interview Answer:
+
+> A Promise handles asynchronous operations with resolve for success and reject for failure.
+
+---
+
+## ✅ 94. **Request Using `.then()`**
+
+### 📘 Notes:
+
+`.then()` executes when a promise is resolved.
+
+Commonly used for API requests.
+
+### Example:
+
+```javascript
+fetch("https://api.example.com/data")
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+```
+
+### Flow:
+
+1. Request sent.
+2. Promise returned.
+3. `.then()` handles success.
+4. `.catch()` handles error.
+
+🎯 Interview Answer:
+
+> The .then() method is used to handle successful promise results, commonly used in API requests.
+
+---
 
