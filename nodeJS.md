@@ -138,3 +138,65 @@ app.patch('/posts/:id', (req, res) => {
 });
 
 app.listen(3000, () => console.log("Server running on port 3000"));
+# Web Development Notes: The "Edit" Route (GET /posts/:id/edit)
+
+The **Edit** route is the standard RESTful pattern used to serve an HTML form to the user. This form is pre-filled with the existing data of a specific resource, allowing the user to make changes before submitting them to the server.
+
+---
+
+## 1. Theoretical Concepts
+
+### Purpose of the Edit Route
+In a full-stack application, you need a way for users to see the current data before they change it. 
+* **The Edit Route (GET)**: Shows the form with existing data.
+* **The Update Route (PATCH/PUT)**: Processes the data submitted from that form.
+
+### Method Overriding
+HTML forms natively only support `GET` and `POST`. To perform a `PATCH` or `DELETE` request from a browser form, we typically use a package like `method-override`.
+
+
+
+### Logical Workflow
+1.  **Request**: User clicks an "Edit" button, sending a GET request to `/posts/:id/edit`.
+2.  **Retrieval**: The server finds the specific post in the database using the ID.
+3.  **Rendering**: The server renders a template (like EJS) and passes the post object to it.
+4.  **Display**: The HTML form displays the current title and content in the input fields.
+
+---
+
+## 2. Technical Implementation (Express & EJS)
+
+### The Express Route (`app.js`)
+```javascript
+const express = require('express');
+const app = express();
+const path = require('path');
+
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
+// Mock Data
+let posts = [
+    { id: 1, title: 'Learning Node', content: 'It is a runtime.' },
+    { id: 2, title: 'Learning EJS', content: 'It is a templating engine.' }
+];
+
+/**
+ * THE EDIT ROUTE
+ * Method: GET
+ * URL: /posts/:id/edit
+ * Purpose: Serve a form pre-filled with existing post data
+ */
+app.get('/posts/:id/edit', (req, res) => {
+    const { id } = req.params;
+    const post = posts.find(p => p.id === parseInt(id));
+
+    if (!post) {
+        return res.status(404).send("Post not found");
+    }
+
+    // Render the edit.ejs file and pass the post object
+    res.render('edit', { post });
+});
+
+app.listen(3000, () => console.log("Server running on port 3000"));
