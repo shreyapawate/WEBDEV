@@ -521,3 +521,133 @@ REST APIs use HTTP methods like GET, POST, PATCH, and DELETE to perform CRUD ope
 `connection.end()` is used to safely terminate the database connection in Node.js.
 
 ---
+## 17) Setting up Express App (Fetch & Show Number of Users)
+
+### 📘 Notes:
+* Use Express + MySQL to fetch data from database.
+* Display total number of users on the app.
+
+### Example:
+```javascript
+const express = require("express");
+const mysql = require("mysql2");
+
+const app = express();
+
+const connection = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "your_password",
+  database: "test_db"
+});
+
+app.get("/", (req, res) => {
+  connection.query("SELECT COUNT(*) AS total FROM users", (err, result) => {
+    if (err) throw err;
+    res.send(`Total Users: ${result[0].total}`);
+  });
+});
+
+app.listen(3000, () => {
+  console.log("Server running on port 3000");
+});
+```
+
+🎯 **Interview Answer:**  
+Express app can fetch user count from database using SQL query and display it on the homepage.
+
+---
+
+## 18) Creating Routes: GET /user
+
+### 📘 Notes:
+* Fetch and display all users (id, username, email).
+
+### Example:
+```javascript
+app.get("/user", (req, res) => {
+  connection.query("SELECT id, username, email FROM users", (err, result) => {
+    if (err) throw err;
+    res.json(result);
+  });
+});
+```
+
+🎯 **Interview Answer:**  
+GET route is used to fetch and display all users from the database.
+
+---
+
+## 19) GET /user/:id/edit (Form to Edit Username)
+
+### 📘 Notes:
+* This route returns a form to edit username.
+* Data is fetched based on user ID.
+
+### Example:
+```javascript
+app.get("/user/:id/edit", (req, res) => {
+  const { id } = req.params;
+
+  connection.query("SELECT * FROM users WHERE id = ?", [id], (err, result) => {
+    if (err) throw err;
+
+    const user = result[0];
+
+    res.send(`
+      <form method="POST" action="/user/${id}?_method=PATCH">
+        <input type="text" name="username" value="${user.username}" />
+        <input type="password" name="password" placeholder="Enter password" />
+        <button type="submit">Update</button>
+      </form>
+    `);
+  });
+});
+```
+
+🎯 **Interview Answer:**  
+This route fetches user data and displays a form to edit the username based on user ID.
+
+---
+
+## 20) PATCH /user/:id (Update Username with Password Check)
+
+### 📘 Notes:
+* Updates username only if correct password is entered.
+* Uses PATCH request.
+
+### Example:
+```javascript
+app.use(express.urlencoded({ extended: true }));
+
+app.patch("/user/:id", (req, res) => {
+  const { id } = req.params;
+  const { username, password } = req.body;
+
+  const correctPassword = "1234"; // example password check
+
+  if (password !== correctPassword) {
+    return res.send("Incorrect password");
+  }
+
+  const sql = "UPDATE users SET username = ? WHERE id = ?";
+
+  connection.query(sql, [username, id], (err) => {
+    if (err) throw err;
+    res.send("Username updated successfully");
+  });
+});
+```
+
+🎯 **Interview Answer:**  
+PATCH route updates user data conditionally after validating user credentials.
+
+---
+
+# ⭐ Express + SQL Interview Revision Summary
+
+* Express connects frontend with database.
+* GET routes fetch data.
+* Dynamic routes use params (`:id`).
+* Forms used for updating data.
+* PATCH updates data securely.
