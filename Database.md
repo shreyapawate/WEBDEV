@@ -354,6 +354,166 @@ connection.end((err) => {
   } else {
     console.log("Connection closed");
   }
+## 13) Create Table User
+
+### 📘 Notes:
+* Create a table to store user data.
+* Common fields: id, username, email.
+
+### Example:
+```sql
+CREATE TABLE users (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  username VARCHAR(50),
+  email VARCHAR(100)
+);
+```
+
+🎯 **Interview Answer:**  
+A user table is created using `CREATE TABLE` with fields like id, username, and email.
+
+---
+
+## 14) Insert User using Placeholders
+
+### 📘 Notes:
+* Placeholders (`?`) prevent SQL injection.
+* Values are passed separately.
+
+### Example:
+```javascript
+const sql = "INSERT INTO users (username, email) VALUES (?, ?)";
+
+connection.query(sql, ["Shreya", "shreya@gmail.com"], (err, result) => {
+  if (err) throw err;
+  console.log("User inserted");
+});
+```
+
+🎯 **Interview Answer:**  
+Placeholders are used to safely insert values into SQL queries and prevent SQL injection attacks.
+
+---
+
+## 15) Insert in Bulk
+
+### 📘 Notes:
+* Used to insert multiple rows in one query.
+* Improves performance.
+
+### Example:
+```javascript
+const sql = "INSERT INTO users (username, email) VALUES ?";
+
+const values = [
+  ["Shreya", "shreya@gmail.com"],
+  ["Rahul", "rahul@gmail.com"],
+  ["Sam", "sam@gmail.com"]
+];
+
+connection.query(sql, [values], (err, result) => {
+  if (err) throw err;
+  console.log("Multiple users inserted");
+});
+```
+
+🎯 **Interview Answer:**  
+Bulk insert allows inserting multiple records in a single query, improving efficiency.
+
+---
+
+## 16) Routing using REST API
+
+### 📘 Notes:
+REST APIs use HTTP methods to perform operations on data.
+
+* GET → Fetch data  
+* POST → Create data  
+* PATCH → Update data  
+* DELETE → Remove data  
+
+---
+
+### 1️⃣ Show Number of Users in DB
+
+```javascript
+app.get("/count", (req, res) => {
+  connection.query("SELECT COUNT(*) AS total FROM users", (err, result) => {
+    res.send(result[0]);
+  });
+});
+```
+
+---
+
+### 2️⃣ GET /user → Show Users
+
+```javascript
+app.get("/user", (req, res) => {
+  connection.query("SELECT id, username, email FROM users", (err, result) => {
+    res.json(result);
+  });
+});
+```
+
+---
+
+### 3️⃣ PATCH /user/:id → Update Username
+
+```javascript
+app.patch("/user/:id", (req, res) => {
+  const { id } = req.params;
+  const { username } = req.body;
+
+  const sql = "UPDATE users SET username = ? WHERE id = ?";
+  connection.query(sql, [username, id], () => {
+    res.send("User updated");
+  });
+});
+```
+
+---
+
+### 4️⃣ POST /user → Add New User
+
+```javascript
+app.post("/user", (req, res) => {
+  const { username, email } = req.body;
+
+  const sql = "INSERT INTO users (username, email) VALUES (?, ?)";
+  connection.query(sql, [username, email], () => {
+    res.send("User added");
+  });
+});
+```
+
+---
+
+### 5️⃣ DELETE /user/:id → Delete User
+
+```javascript
+app.delete("/user/:id", (req, res) => {
+  const { id } = req.params;
+
+  connection.query("DELETE FROM users WHERE id = ?", [id], () => {
+    res.send("User deleted");
+  });
+});
+```
+
+---
+
+🎯 **Interview Answer:**  
+REST APIs use HTTP methods like GET, POST, PATCH, and DELETE to perform CRUD operations on database resources.
+
+---
+
+# ⭐ SQL + Node Interview Revision Summary
+
+* Create table using SQL.
+* Use placeholders for safe queries.
+* Bulk insert improves performance.
+* REST APIs handle CRUD operations.
 });
 ```
 
