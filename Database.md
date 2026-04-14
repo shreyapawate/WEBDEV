@@ -250,3 +250,114 @@ SELECT * FROM students WHERE age > 20;
 
 🎯 **Interview Answer:**  
 `SELECT` retrieves data from one or more tables based on conditions.
+## 10) mysql2 package to connect Node.js with MySQL
+
+### 📘 Notes:
+* `mysql2` is a Node.js package used to connect Node.js applications with MySQL database.
+* It supports promises and is faster than older `mysql` package.
+
+### Installation:
+```bash
+npm install mysql2
+```
+
+### Example:
+```javascript
+const mysql = require("mysql2");
+
+const connection = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "your_password",
+  database: "test_db"
+});
+
+connection.connect((err) => {
+  if (err) {
+    console.log("Connection failed:", err);
+  } else {
+    console.log("Connected to MySQL");
+  }
+});
+```
+
+🎯 **Interview Answer:**  
+`mysql2` is a Node.js package used to establish a connection between a Node application and a MySQL database.
+
+---
+
+## 11) Using SQL from CLI
+
+### 📘 Notes:
+* MySQL can be accessed using Command Line Interface (CLI).
+* Used to run queries directly without any application.
+
+### Login Command:
+```bash
+/usr/local/mysql/bin/mysql -u root -p
+```
+
+### Steps:
+1. Enter password  
+2. Select or create database  
+3. Run SQL queries  
+
+---
+
+### Create SQL File:
+
+Create a file:
+```
+schema.sql
+```
+
+Add queries inside it:
+```sql
+CREATE DATABASE test_db;
+USE test_db;
+
+CREATE TABLE users (
+  id INT PRIMARY KEY,
+  name VARCHAR(50)
+);
+```
+
+---
+
+### Run SQL File (Source Command):
+
+```sql
+SOURCE schema.sql;
+```
+
+🎯 **Interview Answer:**  
+MySQL CLI allows executing SQL queries directly, and the `SOURCE` command is used to run SQL scripts from a file.
+
+---
+
+## 12) Closing the Connection
+
+### 📘 Notes:
+* After completing database operations, connection should be closed.
+* Prevents memory leaks and improves performance.
+
+### Example:
+```javascript
+connection.end();
+```
+
+### With Callback:
+```javascript
+connection.end((err) => {
+  if (err) {
+    console.log("Error closing connection:", err);
+  } else {
+    console.log("Connection closed");
+  }
+});
+```
+
+🎯 **Interview Answer:**  
+`connection.end()` is used to safely terminate the database connection in Node.js.
+
+---
