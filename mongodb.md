@@ -184,4 +184,186 @@ CRUD operations in MongoDB include insertOne/insertMany for creating data, find/
 * MongoDB is a NoSQL database.
 * Uses BSON format.
 * Collections store documents.
-* CRUD operations manage data.
+* CRUD operations manage data.## 6) CRUD Operations (Continue)
+
+### iv) Delete Data
+
+#### deleteOne:
+```javascript
+db.users.deleteOne({ name: "Shreya" });
+```
+
+#### deleteMany:
+```javascript
+db.users.deleteMany({ age: { $lt: 25 } });
+```
+
+🎯 **Interview Answer:**  
+deleteOne removes a single document, while deleteMany removes multiple documents matching a condition.
+
+---
+
+### v) Delete Current Database
+
+```javascript
+db.dropDatabase();
+```
+
+🎯 **Interview Answer:**  
+dropDatabase() deletes the currently selected database permanently.
+
+---
+
+### vi) Delete All Data from Collection
+
+```javascript
+db.users.deleteMany({});
+```
+
+🎯 **Interview Answer:**  
+deleteMany({}) removes all documents from a collection without deleting the collection itself.
+
+---
+
+## ✅ 7) Query Operators
+
+### 📘 Notes:
+* Used to filter data based on conditions.
+
+### Common Operators:
+
+```javascript
+db.users.find({ age: { $gt: 20 } });  // greater than
+db.users.find({ age: { $lt: 30 } });  // less than
+db.users.find({ age: { $gte: 21 } }); // >=
+db.users.find({ age: { $lte: 25 } }); // <=
+db.users.find({ name: { $in: ["Shreya", "Rahul"] } });
+db.users.find({ age: { $ne: 22 } });  // not equal
+```
+
+🎯 **Interview Answer:**  
+Query operators like $gt, $lt, $in, and $ne are used to filter documents in MongoDB queries.
+
+---
+
+## ✅ 8) Nesting
+
+### 📘 Notes:
+* MongoDB allows storing data inside objects (nested documents).
+
+### Example:
+```javascript
+db.users.insertOne({
+  name: "Shreya",
+  address: {
+    city: "Pune",
+    pincode: 411001
+  }
+});
+```
+
+### Access Nested Data:
+```javascript
+db.users.find({ "address.city": "Pune" });
+```
+
+🎯 **Interview Answer:**  
+Nesting allows storing structured data inside documents using embedded objects.
+
+---
+
+## ✅ 9) What is Mongoose
+
+### 📘 Notes:
+* Mongoose is an ODM (Object Data Modeling) library.
+* Helps interact with MongoDB using JavaScript objects.
+* Provides schema-based structure.
+
+🎯 **Interview Answer:**  
+Mongoose is a library that simplifies MongoDB interactions by providing schemas and models in Node.js.
+
+---
+
+## ✅ 10) What is Schema
+
+### 📘 Notes:
+* Schema defines the structure of documents.
+
+### Example:
+```javascript
+const mongoose = require("mongoose");
+
+const userSchema = new mongoose.Schema({
+  name: String,
+  age: Number,
+  email: String
+});
+```
+
+🎯 **Interview Answer:**  
+A schema defines the structure, data types, and rules for documents in MongoDB.
+
+---
+
+## ✅ 11) What are Models & How to Create Model
+
+### 📘 Notes:
+* Model is a wrapper around schema.
+* Used to interact with database.
+
+### Example:
+```javascript
+const User = mongoose.model("User", userSchema);
+```
+
+🎯 **Interview Answer:**  
+A model is a constructor created from a schema that allows CRUD operations on a collection.
+
+---
+
+## ✅ 12) Insert Data in Mongoose
+
+### 📘 Notes:
+
+### Example:
+```javascript
+const user = new User({
+  name: "Shreya",
+  age: 21,
+  email: "shreya@gmail.com"
+});
+```
+
+🎯 **Interview Answer:**  
+Data is inserted by creating an instance of a model and saving it to the database.
+
+---
+
+## ✅ 13) save() Method
+
+### 📘 Notes:
+* Saves document into database.
+
+### Example:
+```javascript
+user.save()
+  .then(() => console.log("Data saved"))
+  .catch(err => console.log(err));
+```
+
+🎯 **Interview Answer:**  
+The save() method stores a document in MongoDB using a Mongoose model.
+
+---
+
+# ⭐ MongoDB + Mongoose Interview Revision Summary
+
+* deleteOne/deleteMany remove documents.
+* dropDatabase deletes entire DB.
+* Query operators filter data.
+* Nesting stores structured data.
+* Mongoose simplifies MongoDB usage.
+* Schema defines structure.
+* Model performs operations.
+* save() inserts data.
+
