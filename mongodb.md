@@ -366,4 +366,275 @@ The save() method stores a document in MongoDB using a Mongoose model.
 * Schema defines structure.
 * Model performs operations.
 * save() inserts data.
+## ✅ 14) Insert Multiple Entries (Mongoose)
 
+### 📘 Notes:
+* Used to insert multiple documents at once.
+
+### Example:
+```javascript
+User.insertMany([
+  { name: "Shreya", age: 21 },
+  { name: "Rahul", age: 22 },
+  { name: "Sam", age: 23 }
+])
+.then(() => console.log("Data inserted"))
+.catch(err => console.log(err));
+```
+
+🎯 **Interview Answer:**  
+insertMany() is used to insert multiple documents into a collection in a single operation.
+
+---
+
+## ✅ 15) Mongo Uses Operation Buffering
+
+### 📘 Notes:
+* Mongoose buffers operations when connection is not ready.
+* Queries are stored temporarily and executed once connection is established.
+
+### Example:
+```javascript
+User.find(); // works even before DB fully connects
+```
+
+🎯 **Interview Answer:**  
+Mongoose uses operation buffering to queue database operations until the connection is successfully established.
+
+---
+
+## ✅ 16) find() in Mongoose
+
+### 📘 Notes:
+* Used to retrieve multiple documents.
+
+### Example:
+```javascript
+User.find()
+  .then(data => console.log(data))
+  .catch(err => console.log(err));
+```
+
+🎯 **Interview Answer:**  
+find() retrieves all documents or matching documents from a collection.
+
+---
+
+## ✅ 17) findById, findOne, findMany
+
+### 📘 Notes:
+
+### findById:
+```javascript
+User.findById("64a123abc")
+  .then(data => console.log(data));
+```
+
+### findOne:
+```javascript
+User.findOne({ name: "Shreya" })
+  .then(data => console.log(data));
+```
+
+### findMany (via find):
+```javascript
+User.find({ age: { $gt: 20 } })
+  .then(data => console.log(data));
+```
+
+🎯 **Interview Answer:**  
+findById fetches by ID, findOne returns first matching document, and find retrieves multiple documents.
+
+---
+
+## ✅ 18) updateOne, updateMany
+
+### 📘 Notes:
+
+### updateOne:
+```javascript
+User.updateOne(
+  { name: "Shreya" },
+  { $set: { age: 25 } }
+);
+```
+
+### updateMany:
+```javascript
+User.updateMany(
+  {},
+  { $set: { active: true } }
+);
+```
+
+🎯 **Interview Answer:**  
+updateOne modifies a single document, while updateMany updates multiple documents.
+
+---
+
+## ✅ 19) findOneAndUpdate
+
+### 📘 Notes:
+* Finds and updates a document in one step.
+
+### Example:
+```javascript
+User.findOneAndUpdate(
+  { name: "Shreya" },
+  { age: 30 },
+  { new: true }
+)
+.then(data => console.log(data));
+```
+
+🎯 **Interview Answer:**  
+findOneAndUpdate finds a document and updates it atomically, optionally returning the updated document.
+
+---
+
+## ✅ 20) deleteOne, findByIdAndDelete, findOneAndDelete
+
+### 📘 Notes:
+
+### deleteOne:
+```javascript
+User.deleteOne({ name: "Shreya" });
+```
+
+### findByIdAndDelete:
+```javascript
+User.findByIdAndDelete("64a123abc");
+```
+
+### findOneAndDelete:
+```javascript
+User.findOneAndDelete({ name: "Rahul" });
+```
+
+🎯 **Interview Answer:**  
+deleteOne removes a single document, findByIdAndDelete removes by ID, and findOneAndDelete removes the first matching document.
+
+---
+
+# ⭐ MongoDB + Mongoose Interview Revision Summary
+
+* insertMany adds multiple documents.
+* Operation buffering delays execution until DB connects.
+* find methods retrieve data.
+* update methods modify data.
+* delete methods remove data efficiently.
+## ✅ 21) Schema Validation
+
+### 📘 Notes:
+* Schema validation ensures that data follows defined rules.
+* Helps maintain data consistency.
+
+### Example:
+```javascript
+const userSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  age: {
+    type: Number,
+    min: 18
+  }
+});
+```
+
+🎯 **Interview Answer:**  
+Schema validation enforces rules like required fields and data types to maintain data integrity.
+
+---
+
+## ✅ 22) Schema Type Options (default, select, get, set, etc.)
+
+### 📘 Notes:
+* Mongoose provides options to control schema behavior.
+
+### Example:
+```javascript
+const userSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    default: "Anonymous"
+  },
+  age: {
+    type: Number,
+    select: false
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
+});
+```
+
+### Getter & Setter:
+
+```javascript
+const userSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    get: v => v.toUpperCase(),
+    set: v => v.trim()
+  }
+});
+```
+
+🎯 **Interview Answer:**  
+Schema options like default, select, get, and set control how data is stored, retrieved, and modified.
+
+---
+
+## ✅ 23) Schema Validation for Updation (runValidators)
+
+### 📘 Notes:
+* By default, validation does NOT run on updates.
+* Use `runValidators: true` to enforce validation.
+
+### Example:
+```javascript
+User.updateOne(
+  { name: "Shreya" },
+  { age: 10 },
+  { runValidators: true }
+);
+```
+
+🎯 **Interview Answer:**  
+runValidators ensures schema validation rules are applied during update operations.
+
+---
+
+## ✅ 24) Custom Error Message inside Schema
+
+### 📘 Notes:
+* Custom messages improve error clarity.
+
+### Example:
+```javascript
+const userSchema = new mongoose.Schema({
+  age: {
+    type: Number,
+    min: [18, "Age must be at least 18"]
+  },
+  email: {
+    type: String,
+    required: [true, "Email is required"]
+  }
+});
+```
+
+🎯 **Interview Answer:**  
+Custom error messages in schema provide meaningful feedback when validation fails.
+
+---
+
+# ⭐ MongoDB Schema Interview Revision Summary
+
+* Schema validation ensures correct data.
+* Options like default and select customize behavior.
+* runValidators applies rules during updates.
+* Custom messages improve debugging and user feedback.
