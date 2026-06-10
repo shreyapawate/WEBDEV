@@ -3450,3 +3450,363 @@ class ErrorBoundary extends React.Component {
 - Uses class components
 - Cannot catch async or event errors
 ````
+````md id="react-advanced-patterns-redux-comparison"
+# React Advanced Topics (HOC + Patterns + Redux Toolkit + Comparisons)
+
+> This section covers **advanced interview concepts**: HOC, React patterns, Redux Toolkit basics, and framework comparison.
+
+---
+
+# SECTION 18: HIGHER ORDER COMPONENTS (HOC)
+
+---
+
+# 1. Definition
+
+A Higher Order Component is a function that:
+
+> Takes a component → returns an enhanced component
+
+```text
+HOC = Component → Enhanced Component
+```
+
+---
+
+# 2. Basic Syntax
+
+```jsx
+const EnhancedComponent = HOC(OriginalComponent);
+```
+
+---
+
+# 3. Use Cases
+
+- Authentication
+- Logging
+- Authorization
+- Code reuse
+- Analytics tracking
+
+---
+
+# 4. Authentication HOC
+
+```jsx
+const withAuth = (Component) => {
+  return (props) => {
+    const isLoggedIn = true;
+
+    return isLoggedIn
+      ? <Component {...props} />
+      : <h1>Please Login</h1>;
+  };
+};
+```
+
+---
+
+# 5. Logging HOC
+
+```jsx
+const withLogger = (Component) => {
+  return (props) => {
+    console.log("Rendered");
+
+    return <Component {...props} />;
+  };
+};
+```
+
+---
+
+# 6. Interview Questions (HOC)
+
+### Q1. What is HOC?
+A function that takes a component and returns an enhanced component.
+
+---
+
+### Q2. Why use HOC?
+- Code reuse
+- Separation of logic
+- Reusability of behavior
+
+---
+
+### Q3. Disadvantages?
+- Wrapper hell
+- Hard debugging
+- Prop collisions
+
+---
+
+---
+
+# SECTION 19: REACT PATTERNS
+
+---
+
+# 1. Render Props Pattern
+
+A component receives a function as a prop.
+
+```jsx
+<DataProvider render={(data) => <h1>{data}</h1>} />
+```
+
+---
+
+# 2. HOC Pattern
+
+Already covered above.
+
+---
+
+# 3. Compound Components
+
+Multiple components working together.
+
+```jsx
+<Tabs>
+  <Tab />
+  <TabPanel />
+</Tabs>
+```
+
+---
+
+### Example:
+
+```jsx
+<Tabs>
+  <Tabs.List />
+  <Tabs.Panel />
+</Tabs>
+```
+
+---
+
+# 4. Controlled Pattern
+
+Parent controls state.
+
+```jsx
+<input value={value} onChange={setValue} />
+```
+
+---
+
+# 5. Context Pattern
+
+Used for global state sharing.
+
+```jsx
+const ThemeContext = createContext();
+```
+
+---
+
+### Provider:
+
+```jsx
+<ThemeContext.Provider value="dark">
+  <App />
+</ThemeContext.Provider>
+```
+
+---
+
+### Consumer:
+
+```jsx
+const theme = useContext(ThemeContext);
+```
+
+---
+
+# SECTION 20: REDUX TOOLKIT
+
+---
+
+> Redux Toolkit is the **standard way of using Redux today**.
+
+---
+
+# 1. Store
+
+Central state container.
+
+```jsx
+const store = configureStore({
+  reducer: {}
+});
+```
+
+---
+
+# 2. Slice
+
+Combination of:
+- state
+- reducers
+- actions
+
+```jsx
+const counterSlice = createSlice({
+  name: "counter",
+  initialState: { value: 0 },
+  reducers: {
+    increment: (state) => {
+      state.value += 1;
+    }
+  }
+});
+```
+
+---
+
+# 3. Actions
+
+Automatically generated from slice.
+
+```jsx
+export const { increment } = counterSlice.actions;
+```
+
+---
+
+# 4. Reducers
+
+Functions that modify state.
+
+---
+
+# 5. Dispatch
+
+Used to trigger actions.
+
+```jsx
+dispatch(increment());
+```
+
+---
+
+# 6. useSelector
+
+Used to access state.
+
+```jsx
+const count = useSelector((state) => state.counter.value);
+```
+
+---
+
+# 7. useDispatch
+
+Used to send actions.
+
+```jsx
+const dispatch = useDispatch();
+```
+
+---
+
+# 8. Async Thunks
+
+Used for API calls in Redux.
+
+```jsx
+export const fetchData = createAsyncThunk(
+  "data/fetch",
+  async () => {
+    const res = await fetch("/api");
+    return res.json();
+  }
+);
+```
+
+---
+
+# SECTION 21: REACT VS OTHER FRAMEWORKS
+
+---
+
+# Comparison Table
+
+| Feature | React | Angular | Vue |
+|--------|------|--------|-----|
+| Type | Library | Full Framework | Framework |
+| Learning Curve | Medium | High | Easy |
+| Data Binding | One-way | Two-way | Two-way |
+| Performance | Fast | Fast | Fast |
+| Flexibility | High | Low | Medium |
+| DOM | Virtual DOM | Real DOM | Virtual DOM |
+| Size | Small | Large | Small |
+
+---
+
+# Key Differences
+
+---
+
+## React
+
+- Component-based
+- Uses JSX
+- Flexible ecosystem
+- Library, not full framework
+
+---
+
+## Angular
+
+- Full MVC framework
+- TypeScript based
+- Heavy structure
+- Built-in features
+
+---
+
+## Vue
+
+- Easy learning curve
+- Lightweight
+- Good for beginners
+
+---
+
+# QUICK REVISION SUMMARY
+
+---
+
+## HOC
+- Function that enhances components
+- Used for reuse (auth, logging)
+- Can cause wrapper complexity
+
+---
+
+## React Patterns
+- Render props = function as prop
+- Compound components = grouped UI logic
+- Controlled = parent manages state
+- Context = global sharing
+
+---
+
+## Redux Toolkit
+- Store = global state
+- Slice = state + reducers
+- useSelector = read state
+- useDispatch = update state
+- AsyncThunk = API calls
+
+---
+
+## React vs Others
+- React = flexible library
+- Angular = full framework
+- Vue = simple and beginner-friendly
+````
