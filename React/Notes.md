@@ -3016,3 +3016,437 @@ Simplifies consuming context.
 - useContext simplifies usage
 - Not ideal for large-scale state management
 ````
+````md id="react-router-api-performance-error-boundaries"
+# React Router + API Integration + Performance Optimization + Error Boundaries (Placement Notes)
+
+> This is a **high-frequency React interview revision sheet** covering routing, data fetching, optimization, and error handling.
+
+---
+
+# SECTION 14: REACT ROUTER
+
+> React Router is used for **client-side routing in SPA applications**.
+
+---
+
+# 1. React Router DOM
+
+Library used for navigation without page reload.
+
+```bash
+npm install react-router-dom
+```
+
+---
+
+# 2. BrowserRouter
+
+Wraps the entire app and enables routing.
+
+```jsx
+import { BrowserRouter } from "react-router-dom";
+
+<BrowserRouter>
+  <App />
+</BrowserRouter>
+```
+
+---
+
+# 3. Routes
+
+Container for all routes.
+
+```jsx
+import { Routes, Route } from "react-router-dom";
+```
+
+---
+
+# 4. Route
+
+Defines a single route.
+
+```jsx
+<Route path="/" element={<Home />} />
+<Route path="/about" element={<About />} />
+```
+
+---
+
+# 5. Link
+
+Used for navigation without reload.
+
+```jsx
+<Link to="/about">About</Link>
+```
+
+---
+
+# 6. NavLink
+
+Same as Link but provides active styling.
+
+```jsx
+<NavLink to="/home">Home</NavLink>
+```
+
+---
+
+# 7. useNavigate
+
+Programmatic navigation.
+
+```jsx
+const navigate = useNavigate();
+
+navigate("/dashboard");
+```
+
+---
+
+# 8. useParams
+
+Used to read URL parameters.
+
+```jsx
+<Route path="/user/:id" element={<User />} />
+```
+
+```jsx
+const { id } = useParams();
+```
+
+---
+
+# 9. Nested Routes
+
+Routes inside routes.
+
+```jsx
+<Route path="/dashboard" element={<Dashboard />}>
+  <Route path="profile" element={<Profile />} />
+</Route>
+```
+
+---
+
+# 10. Protected Routes
+
+Used for authentication-based routing.
+
+### Example:
+
+```jsx
+const ProtectedRoute = ({ children }) => {
+  return isLoggedIn ? children : <Navigate to="/login" />;
+};
+```
+
+---
+
+# 11. Lazy Routes
+
+Used for code splitting.
+
+```jsx
+const Home = React.lazy(() => import("./Home"));
+```
+
+---
+
+---
+
+# SECTION 15: API INTEGRATION
+
+---
+
+# 1. Fetch API
+
+```jsx
+fetch("/api/data")
+  .then(res => res.json())
+  .then(data => console.log(data));
+```
+
+---
+
+# 2. Async/Await
+
+```jsx
+const fetchData = async () => {
+  const res = await fetch("/api/data");
+  const data = await res.json();
+};
+```
+
+---
+
+# 3. Error Handling
+
+```jsx
+try {
+  const res = await fetch("/api/data");
+} catch (error) {
+  console.log(error);
+}
+```
+
+---
+
+# 4. Loading States
+
+```jsx
+const [loading, setLoading] = useState(true);
+```
+
+```jsx
+{loading ? "Loading..." : "Data Loaded"}
+```
+
+---
+
+# 5. AbortController
+
+Used to cancel API requests.
+
+```jsx
+const controller = new AbortController();
+
+fetch("/api", {
+  signal: controller.signal
+});
+
+controller.abort();
+```
+
+---
+
+# 6. Axios
+
+Popular HTTP client.
+
+```bash
+npm install axios
+```
+
+```jsx
+axios.get("/api/data")
+  .then(res => console.log(res.data));
+```
+
+---
+
+# 7. CRUD Operations
+
+### Create
+```jsx
+axios.post("/api/data", data);
+```
+
+### Read
+```jsx
+axios.get("/api/data");
+```
+
+### Update
+```jsx
+axios.put("/api/data/1", data);
+```
+
+### Delete
+```jsx
+axios.delete("/api/data/1");
+```
+
+---
+
+---
+
+# SECTION 16: PERFORMANCE OPTIMIZATION
+
+---
+
+# 1. React.memo
+
+Prevents unnecessary re-renders.
+
+```jsx
+const Component = React.memo(function Component(props) {
+  return <h1>{props.name}</h1>;
+});
+```
+
+---
+
+# 2. useMemo
+
+Memoizes computed values.
+
+```jsx
+const result = useMemo(() => compute(data), [data]);
+```
+
+---
+
+# 3. useCallback
+
+Memoizes functions.
+
+```jsx
+const handleClick = useCallback(() => {}, []);
+```
+
+---
+
+# 4. Code Splitting
+
+Split app into smaller bundles.
+
+```jsx
+const Home = React.lazy(() => import("./Home"));
+```
+
+---
+
+# 5. Lazy Loading
+
+Load components only when needed.
+
+```jsx
+<Suspense fallback={<div>Loading...</div>}>
+  <Home />
+</Suspense>
+```
+
+---
+
+# 6. Suspense
+
+Handles lazy loading fallback UI.
+
+---
+
+# 7. Tree Shaking
+
+Removes unused code during bundling.
+
+---
+
+# 8. Bundle Optimization
+
+Techniques:
+- Code splitting
+- Lazy loading
+- Removing unused dependencies
+- Memoization
+
+---
+
+---
+
+# SECTION 17: ERROR BOUNDARIES
+
+---
+
+# 1. Why Needed?
+
+React components can crash due to runtime errors.
+
+Error Boundaries prevent full app crash.
+
+---
+
+# 2. Working
+
+Error Boundaries catch errors in child components.
+
+---
+
+# 3. Lifecycle Methods
+
+Must be class component.
+
+```jsx
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, info) {
+    console.log(error, info);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <h1>Something went wrong</h1>;
+    }
+
+    return this.props.children;
+  }
+}
+```
+
+---
+
+# 4. Limitations
+
+- Cannot catch errors in:
+  - Event handlers
+  - Async code
+  - setTimeout
+- Only class components support it
+- Needs fallback UI
+
+---
+
+# QUICK REVISION SUMMARY
+
+---
+
+## React Router
+- BrowserRouter wraps app
+- Routes define routing structure
+- Route maps path → component
+- Link for navigation
+- NavLink for active styling
+- useNavigate for programmatic navigation
+- useParams for dynamic routes
+- Nested routes supported
+- Protected routes control access
+- Lazy routes improve performance
+
+---
+
+## API Integration
+- Fetch / Axios for API calls
+- Async/await preferred
+- Handle loading + error states
+- AbortController cancels requests
+- CRUD = Create, Read, Update, Delete
+
+---
+
+## Performance Optimization
+- React.memo prevents re-renders
+- useMemo memoizes values
+- useCallback memoizes functions
+- Code splitting reduces bundle size
+- Lazy loading loads components on demand
+- Suspense handles fallback UI
+- Tree shaking removes unused code
+
+---
+
+## Error Boundaries
+- Catch UI errors in React tree
+- Prevent full app crash
+- Uses class components
+- Cannot catch async or event errors
+````
