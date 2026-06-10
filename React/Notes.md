@@ -1143,14 +1143,302 @@ A wrapper that avoids extra DOM nodes.
 
 ---
 
-# 12. Quick Revision Summary
+# React State Management (Quick Placement Notes)
 
-- JSX = HTML-like syntax in JavaScript
-- Converted by Babel
-- Becomes React.createElement()
-- Must return single parent
-- Uses className instead of class
-- Uses htmlFor instead of for
-- Supports JS expressions using {}
-- Fragments avoid extra DOM nodes
-- Conditional rendering via ternary and &&
+> State is one of the most important React concepts. It is heavily asked in interviews and is the core of dynamic UI behavior.
+
+---
+
+# 1. What is State?
+
+State is a **built-in object in React** that holds **dynamic data** of a component.
+
+### Example:
+
+```jsx
+const [count, setCount] = useState(0);
+```
+
+### Key Point:
+- State controls UI changes
+- When state changes → component re-renders
+
+---
+
+# 2. Why State Exists?
+
+Without state:
+
+- UI cannot update dynamically
+- No re-render on data change
+- Static applications only
+
+### Example Problem:
+
+If counter value changes, UI should update automatically.
+
+State solves this:
+
+```jsx
+setCount(count + 1);
+```
+
+---
+
+# 3. State Lifecycle
+
+State goes through 3 main phases:
+
+## 1. Initialization
+
+```jsx
+const [count, setCount] = useState(0);
+```
+
+---
+
+## 2. Update Phase
+
+```jsx
+setCount(5);
+```
+
+---
+
+## 3. Re-render Phase
+
+React re-renders component with updated state.
+
+---
+
+### Flow:
+
+```text
+State Change
+   ↓
+Component Re-render
+   ↓
+UI Update
+```
+
+---
+
+# 4. State vs Props
+
+| Feature | State | Props |
+|--------|------|------|
+| Managed by | Component | Parent |
+| Mutable | Yes | No |
+| Purpose | Dynamic data | Data passing |
+| Updates UI | Yes | Yes |
+
+---
+
+### Example:
+
+```jsx
+// Props
+<User name="Shreya" />
+
+// State
+const [name, setName] = useState("Shreya");
+```
+
+---
+
+# 5. State Updates
+
+State updates are NOT immediate.
+
+### Example:
+
+```jsx
+setCount(count + 1);
+console.log(count); // may not reflect updated value
+```
+
+---
+
+### Why?
+
+React batches state updates for performance.
+
+---
+
+# 6. Batching
+
+Batching means React **groups multiple state updates into a single re-render**.
+
+---
+
+### Example:
+
+```jsx
+setCount(c => c + 1);
+setFlag(true);
+setName("React");
+```
+
+React will:
+
+```text
+Combine updates → Single Re-render
+```
+
+---
+
+### Benefits:
+
+- Better performance
+- Fewer re-renders
+- Optimized UI updates
+
+---
+
+# 7. Functional Updates
+
+Used when new state depends on previous state.
+
+---
+
+### Problem:
+
+```jsx
+setCount(count + 1);
+setCount(count + 1);
+```
+
+May NOT give correct result due to batching.
+
+---
+
+### Solution:
+
+```jsx
+setCount(prev => prev + 1);
+setCount(prev => prev + 1);
+```
+
+---
+
+### Why it works:
+
+React guarantees correct previous state value.
+
+---
+
+# 8. State Management Patterns
+
+Different ways to manage state depending on app size.
+
+---
+
+## 1. Local State
+
+State inside a component.
+
+```jsx
+const [count, setCount] = useState(0);
+```
+
+### Use case:
+- Small components
+- Forms
+- Toggles
+
+---
+
+## 2. Lifting State Up
+
+Move state to common parent.
+
+```text
+Child A ← Parent → Child B
+```
+
+### Use case:
+- Shared data between components
+
+---
+
+## 3. Props Passing
+
+Pass state as props to child components.
+
+```jsx
+<Child count={count} />
+```
+
+---
+
+## 4. Context API (Global State)
+
+Used to avoid props drilling.
+
+```jsx
+const ThemeContext = createContext();
+```
+
+### Use case:
+- Auth state
+- Theme
+- User data
+
+---
+
+## 5. External State Management (Redux)
+
+Used for large applications.
+
+### Use case:
+- Complex global state
+- Large scale apps
+
+---
+
+# 9. Key Interview Points
+
+### Q1. What is state?
+
+State is a built-in object that stores dynamic data in a component.
+
+---
+
+### Q2. Why state is needed?
+
+To make UI dynamic and interactive.
+
+---
+
+### Q3. Does state update immediately?
+
+No. State updates are asynchronous and batched.
+
+---
+
+### Q4. What is batching?
+
+Grouping multiple state updates into a single re-render.
+
+---
+
+### Q5. What are functional updates?
+
+Updating state using previous state value:
+
+```jsx
+setCount(prev => prev + 1);
+```
+
+---
+
+### Q6. Difference between state and props?
+
+| State | Props |
+|------|------|
+| Internal data | External data |
+| Mutable | Immutable |
+| Controlled by component | Controlled by parent |
+
+---
+
