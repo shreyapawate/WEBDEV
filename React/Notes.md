@@ -1441,4 +1441,1578 @@ setCount(prev => prev + 1);
 | Controlled by component | Controlled by parent |
 
 ---
+# React Event Handling, Forms, Lists & Keys (Placement Notes)
 
+> This section covers how React handles user interactions, forms, and dynamic rendering—very important for interviews and real-world projects.
+
+---
+
+# SECTION 6: EVENT HANDLING
+
+---
+
+# 1. Synthetic Events
+
+React wraps native browser events into a **Synthetic Event system**.
+
+### Why?
+
+To ensure:
+- Cross-browser compatibility
+- Consistent behavior
+- Better performance
+
+---
+
+### Example:
+
+```jsx
+function handleClick(e) {
+  console.log(e); // SyntheticEvent
+}
+
+<button onClick={handleClick}>Click</button>
+```
+
+---
+
+### Key Point:
+Synthetic events behave like native events but are standardized by React.
+
+---
+
+# 2. Event Pooling (Older Concept)
+
+React used to reuse event objects for performance.
+
+### Meaning:
+Event object was cleared after event handler execution.
+
+```jsx
+e.target.value // may become null later (old React versions)
+```
+
+---
+
+### Note:
+Event pooling is **removed in React 17+**, but still asked in interviews.
+
+---
+
+# 3. Event Bubbling
+
+Event moves from **child → parent**.
+
+### Example:
+
+```jsx
+<div onClick={() => console.log("Parent")}>
+  <button onClick={() => console.log("Child")}>
+    Click
+  </button>
+</div>
+```
+
+### Output:
+```
+Child
+Parent
+```
+
+---
+
+# 4. Event Capturing
+
+Event moves from **parent → child**.
+
+### Syntax:
+
+```jsx
+<div onClickCapture={() => console.log("Parent")}>
+```
+
+---
+
+### Flow:
+
+```text
+Capture Phase → Target → Bubble Phase
+```
+
+---
+
+# 5. Prevent Default
+
+Stops default browser behavior.
+
+### Example:
+
+```jsx
+function handleSubmit(e) {
+  e.preventDefault();
+}
+```
+
+### Use cases:
+- Form submission
+- Link navigation
+
+---
+
+# 6. Stop Propagation
+
+Stops event from bubbling to parent.
+
+### Example:
+
+```jsx
+function handleChild(e) {
+  e.stopPropagation();
+}
+```
+
+### Effect:
+Parent event will NOT trigger.
+
+---
+
+# 7. Passing Parameters in Events
+
+### Wrong:
+
+```jsx
+<button onClick={handleClick(id)}>Click</button>
+```
+
+---
+
+### Correct:
+
+```jsx
+<button onClick={() => handleClick(id)}>
+  Click
+</button>
+```
+
+---
+
+### Alternative:
+
+```jsx
+function handleClick(id) {
+  return function () {
+    console.log(id);
+  };
+}
+```
+
+---
+
+# SECTION 7: FORMS
+
+---
+
+# 1. Controlled Components
+
+Form data controlled by React state.
+
+### Example:
+
+```jsx
+const [name, setName] = useState("");
+
+<input
+  value={name}
+  onChange={(e) => setName(e.target.value)}
+/>
+```
+
+---
+
+### Key Point:
+React is the single source of truth.
+
+---
+
+# 2. Uncontrolled Components
+
+DOM handles form data using refs.
+
+### Example:
+
+```jsx
+const inputRef = useRef();
+
+<input ref={inputRef} />
+
+console.log(inputRef.current.value);
+```
+
+---
+
+### Difference:
+
+| Controlled | Uncontrolled |
+|------------|--------------|
+| React state | DOM state |
+| Re-render | No re-render |
+| Recommended | Rare cases |
+
+---
+
+# 3. Form Validation
+
+### Basic Example:
+
+```jsx
+if (password.length < 6) {
+  alert("Password too short");
+}
+```
+
+---
+
+### Common validations:
+- Required fields
+- Email format
+- Password strength
+- Number range
+
+---
+
+# 4. Dynamic Forms
+
+Forms where fields change dynamically.
+
+### Example:
+
+```jsx
+{fields.map((field, i) => (
+  <input key={i} value={field.value} />
+))}
+```
+
+---
+
+### Use cases:
+- Multi-step forms
+- Survey forms
+- Custom input builders
+
+---
+
+# 5. File Upload
+
+### Example:
+
+```jsx
+function handleFile(e) {
+  const file = e.target.files[0];
+  console.log(file);
+}
+
+<input type="file" onChange={handleFile} />
+```
+
+---
+
+### Key Points:
+- Use `FormData` for backend upload
+- Files are accessed via `e.target.files`
+
+---
+
+# 6. Interview Questions (Forms)
+
+### Q1. What are controlled components?
+
+Components where form data is controlled by React state.
+
+---
+
+### Q2. Controlled vs Uncontrolled?
+
+| Controlled | Uncontrolled |
+|------------|--------------|
+| State driven | DOM driven |
+| Easy validation | Less control |
+| Preferred | Rare use cases |
+
+---
+
+### Q3. Why controlled components?
+
+- Easy validation
+- Real-time updates
+- Predictable behavior
+
+---
+
+### Q4. How do you handle form validation?
+
+Using state + conditional checks or libraries like Formik/Yup.
+
+---
+
+# SECTION 8: LISTS AND KEYS
+
+---
+
+# 1. Rendering Lists
+
+### Example:
+
+```jsx
+const users = ["A", "B", "C"];
+
+users.map((user) => (
+  <li>{user}</li>
+));
+```
+
+---
+
+# 2. Why Keys Exist?
+
+Keys help React identify **which items changed, added, or removed**.
+
+### Why important?
+
+React uses **Virtual DOM diffing**.
+
+---
+
+### Without keys:
+- Poor performance
+- Incorrect UI updates
+
+---
+
+### With keys:
+
+```jsx
+users.map((user) => (
+  <li key={user.id}>{user.name}</li>
+));
+```
+
+---
+
+# 3. Key Selection Strategies
+
+### Best → Stable Unique ID
+
+```jsx
+key={user.id}
+```
+
+---
+
+### Acceptable → Unique string
+
+```jsx
+key={email}
+```
+
+---
+
+### Worst → Index (avoid)
+
+```jsx
+key={index}
+```
+
+---
+
+### Why index is bad?
+
+- Breaks on reordering
+- Causes incorrect UI updates
+
+---
+
+# 4. Reconciliation Impact
+
+React compares:
+
+```text
+Old Virtual DOM vs New Virtual DOM
+```
+
+Keys help React:
+- Match elements
+- Avoid full re-render
+- Optimize updates
+
+---
+
+# 5. Performance Issues
+
+### Without keys:
+- Full list re-render
+- UI glitches
+- Poor performance
+
+---
+
+### With proper keys:
+- Minimal DOM updates
+- Efficient rendering
+- Smooth UI
+
+---
+
+# React Forms + Lists & Keys (Placement Notes)
+
+> This is a **concise, interview-focused revision sheet** covering Forms and Lists & Keys in React.
+
+---
+
+# SECTION 7: FORMS
+
+---
+
+# 1. Controlled Components
+
+A controlled component is a form element whose value is controlled by **React state**.
+
+### Example:
+
+```jsx
+const [name, setName] = useState("");
+
+<input
+  value={name}
+  onChange={(e) => setName(e.target.value)}
+/>
+```
+
+### Key Idea:
+React state is the **single source of truth**.
+
+---
+
+# 2. Uncontrolled Components
+
+Form data is handled by the **DOM itself**, not React state.
+
+### Example:
+
+```jsx
+const inputRef = useRef();
+
+<input ref={inputRef} />
+
+console.log(inputRef.current.value);
+```
+
+### Key Idea:
+DOM manages value, React just reads it when needed.
+
+---
+
+### Controlled vs Uncontrolled
+
+| Feature | Controlled | Uncontrolled |
+|--------|------------|--------------|
+| State | React state | DOM |
+| Updates | On every change | On submit/read |
+| Validation | Easy | Hard |
+| Preferred | Yes | Rare cases |
+
+---
+
+# 3. Form Validation
+
+Used to ensure correct user input.
+
+### Example:
+
+```jsx
+if (!email.includes("@")) {
+  alert("Invalid email");
+}
+```
+
+---
+
+### Common validations:
+- Required fields
+- Email format
+- Password length
+- Number range checks
+
+---
+
+### Better approach:
+- Manual validation (small apps)
+- Libraries like Formik / Yup (large apps)
+
+---
+
+# 4. Dynamic Forms
+
+Forms where fields are generated dynamically.
+
+### Example:
+
+```jsx
+{fields.map((field, index) => (
+  <input
+    key={index}
+    value={field.value}
+  />
+))}
+```
+
+---
+
+### Use cases:
+- Surveys
+- Multi-step forms
+- Custom input builders
+
+---
+
+# 5. File Upload
+
+### Example:
+
+```jsx
+function handleFile(e) {
+  const file = e.target.files[0];
+  console.log(file);
+}
+
+<input type="file" onChange={handleFile} />
+```
+
+---
+
+### Important points:
+- Use `e.target.files`
+- Use `FormData` for backend upload
+- Can upload images, PDFs, etc.
+
+---
+
+# 6. Interview Questions (Forms)
+
+### Q1. What is a controlled component?
+
+A component where form value is controlled by React state.
+
+---
+
+### Q2. Difference between controlled and uncontrolled?
+
+| Controlled | Uncontrolled |
+|------------|--------------|
+| Uses state | Uses DOM |
+| Easy validation | Hard validation |
+| Preferred | Rare use |
+
+---
+
+### Q3. Why controlled components are preferred?
+
+- Predictable
+- Easy validation
+- Real-time updates
+
+---
+
+### Q4. How do you handle form validation?
+
+- Manual checks
+- Libraries like Formik/Yup
+
+---
+
+---
+
+# SECTION 8: LISTS AND KEYS
+
+---
+
+# 1. Rendering Lists
+
+React uses `.map()` to render lists.
+
+### Example:
+
+```jsx
+const users = ["A", "B", "C"];
+
+users.map((user) => (
+  <li>{user}</li>
+));
+```
+
+---
+
+# 2. Why Keys Exist?
+
+Keys help React identify which items:
+- Changed
+- Added
+- Removed
+
+### Key Role:
+Efficient **Virtual DOM diffing**
+
+---
+
+### Without keys:
+- Full re-render of list
+- Poor performance
+- UI inconsistencies
+
+---
+
+# 3. Key Selection Strategies
+
+### Best Practice:
+
+```jsx
+key={user.id}
+```
+
+---
+
+### Acceptable:
+
+```jsx
+key={email}
+```
+
+---
+
+### Worst Practice (Avoid):
+
+```jsx
+key={index}
+```
+
+---
+
+### Why index is bad?
+
+- Breaks when list order changes
+- Causes wrong UI updates
+- Poor reconciliation
+
+---
+
+# 4. Reconciliation Impact
+
+React compares:
+
+```text
+Old Virtual DOM
+      vs
+New Virtual DOM
+```
+
+Keys help React:
+- Match elements correctly
+- Update only changed items
+- Avoid full re-render
+
+---
+
+# 5. Performance Issues
+
+### Without keys:
+- Slow rendering
+- Unnecessary DOM updates
+- UI bugs in dynamic lists
+
+---
+
+### With proper keys:
+- Optimized rendering
+- Minimal DOM updates
+- Smooth UI performance
+
+---
+
+# React Advanced Core (Lists + Virtual DOM + Lifecycle)
+
+> This section combines three **very high-frequency interview topics**:
+> Lists & Keys, Virtual DOM, and React Lifecycle.
+
+---
+
+# SECTION 8: LISTS AND KEYS
+
+---
+
+# 1. Rendering Lists
+
+React renders lists using `.map()`.
+
+### Example:
+
+```jsx
+const users = ["A", "B", "C"];
+
+users.map((user) => (
+  <li>{user}</li>
+));
+```
+
+---
+
+# 2. Why Keys Exist?
+
+Keys help React identify each element uniquely during updates.
+
+### Purpose:
+- Track items in list
+- Optimize updates
+- Support efficient Virtual DOM diffing
+
+---
+
+# 3. Key Selection Strategies
+
+### Best Practice:
+
+```jsx
+key={user.id}
+```
+
+---
+
+### Acceptable:
+
+```jsx
+key={user.email}
+```
+
+---
+
+### Avoid:
+
+```jsx
+key={index}
+```
+
+---
+
+### Why avoid index?
+
+- Breaks on reordering
+- Incorrect UI updates
+- Poor reconciliation performance
+
+---
+
+# 4. Reconciliation Impact
+
+React compares:
+
+```text
+Old Virtual DOM
+        vs
+New Virtual DOM
+```
+
+Keys help React:
+- Match same elements
+- Detect changes
+- Avoid full re-render
+
+---
+
+# 5. Performance Issues
+
+Without proper keys:
+- Whole list re-renders
+- UI glitches in dynamic lists
+- Slow updates
+
+With proper keys:
+- Minimal updates
+- Better performance
+- Stable UI behavior
+
+---
+
+---
+
+# SECTION 9: VIRTUAL DOM (VERY IMPORTANT)
+
+> One of the MOST asked React interview topics.
+
+---
+
+# 1. Real DOM
+
+Real DOM is the actual browser DOM.
+
+### Characteristics:
+- Heavy
+- Slow updates
+- Repaints entire tree on change
+
+### Example:
+
+```text
+Change in one element → Whole DOM may re-render
+```
+
+---
+
+# 2. Virtual DOM
+
+Virtual DOM is a **lightweight copy of Real DOM** stored in memory.
+
+### Key Idea:
+React updates Virtual DOM first, not Real DOM directly.
+
+---
+
+# 3. Diffing Algorithm
+
+Diffing = comparing old Virtual DOM with new Virtual DOM.
+
+### Purpose:
+Find exactly what changed.
+
+```text
+Old VDOM → New VDOM
+         ↓
+   Differences detected
+```
+
+---
+
+# 4. Reconciliation
+
+Reconciliation = process of updating Real DOM based on differences.
+
+### Steps:
+1. Compare Virtual DOMs
+2. Identify changes
+3. Update only required parts of Real DOM
+
+---
+
+# 5. Fiber Architecture
+
+Fiber is React’s internal engine for rendering.
+
+### Features:
+- Breaks rendering into small units
+- Prioritizes updates
+- Improves responsiveness
+
+### Why Fiber is important:
+- Enables smooth UI
+- Supports concurrent rendering
+
+---
+
+# 6. Render Phase
+
+### What happens:
+- React builds Virtual DOM
+- Calculates changes (diffing)
+- No DOM update yet
+
+### Key Point:
+This phase is **pure and interruptible**
+
+---
+
+# 7. Commit Phase
+
+### What happens:
+- Changes are applied to Real DOM
+- UI is updated on screen
+
+### Key Point:
+This phase is **not interruptible**
+
+---
+
+# VIRTUAL DOM FLOW
+
+```text
+State Change
+    ↓
+Render Phase (Virtual DOM + Diffing)
+    ↓
+Reconciliation
+    ↓
+Commit Phase (Real DOM Update)
+    ↓
+UI Update
+```
+
+---
+
+---
+
+# SECTION 10: REACT LIFECYCLE
+
+---
+
+# 1. Class Component Lifecycle
+
+React class components have 3 phases:
+
+---
+
+# A. Mounting Phase (Component loads first time)
+
+### Methods:
+
+```text
+constructor()
+render()
+componentDidMount()
+```
+
+### Flow:
+
+```text
+constructor → render → componentDidMount
+```
+
+---
+
+### Use cases:
+- API calls
+- Initial setup
+- DOM operations
+
+---
+
+# B. Updating Phase (State/props change)
+
+### Methods:
+
+```text
+shouldComponentUpdate()
+render()
+componentDidUpdate()
+```
+
+### Flow:
+
+```text
+Update → shouldComponentUpdate → render → componentDidUpdate
+```
+
+---
+
+### Use cases:
+- Optimizing re-renders
+- Responding to state changes
+
+---
+
+# C. Unmounting Phase (Component removed)
+
+### Method:
+
+```text
+componentWillUnmount()
+```
+
+### Use cases:
+- Cleanup timers
+- Remove event listeners
+- Cancel API calls
+
+---
+
+# D. Error Handling Phase
+
+### Method:
+
+```text
+componentDidCatch()
+```
+
+### Use case:
+- Catch UI errors
+- Show fallback UI
+
+---
+
+---
+
+# 2. Functional Lifecycle Mapping (VERY IMPORTANT)
+
+React Hooks replaced lifecycle methods.
+
+---
+
+## Mounting Equivalent
+
+```jsx
+useEffect(() => {
+  // componentDidMount
+}, []);
+```
+
+---
+
+## Updating Equivalent
+
+```jsx
+useEffect(() => {
+  // componentDidUpdate
+}, [dependency]);
+```
+
+---
+
+## Unmounting Equivalent
+
+```jsx
+useEffect(() => {
+  return () => {
+    // componentWillUnmount
+  };
+}, []);
+```
+
+---
+
+# LIFECYCLE MAPPING TABLE
+
+| Class | Functional |
+|------|------------|
+| componentDidMount | useEffect(() => {}, []) |
+| componentDidUpdate | useEffect(() => {}, [dep]) |
+| componentWillUnmount | cleanup function |
+| componentDidCatch | Error Boundaries (still class-based) |
+
+---
+
+````md id="react-hooks-rendering-context"
+# React Hooks + Rendering + Context API (Placement Notes)
+
+> This section covers **the most important React interview topics**:
+Hooks, Rendering behavior, and Context API.
+
+---
+
+# SECTION 11: REACT HOOKS (MOST IMPORTANT)
+
+---
+
+# 1. useState
+
+Used to store **local component state**.
+
+### Example:
+
+```jsx
+const [count, setCount] = useState(0);
+```
+
+---
+
+## Internal Working
+
+- State is stored per component instance
+- React keeps a hook list internally
+- On re-render, hook order is preserved
+
+---
+
+## Batching
+
+React groups multiple state updates into one render.
+
+```jsx
+setCount(c => c + 1);
+setFlag(true);
+```
+
+→ Only **one re-render**
+
+---
+
+## Functional Updates
+
+Used when new state depends on previous state.
+
+```jsx
+setCount(prev => prev + 1);
+```
+
+---
+
+## Common Mistakes
+
+### ❌ Direct mutation
+
+```jsx
+count = count + 1;
+```
+
+### ❌ Wrong state dependency
+
+```jsx
+setCount(count + 1);
+setCount(count + 1);
+```
+
+(Incorrect due to batching)
+
+---
+
+---
+
+# 2. useEffect
+
+Used for **side effects**.
+
+---
+
+## Side Effects Examples
+
+- API calls
+- DOM manipulation
+- Timers
+- Event listeners
+
+---
+
+## Dependency Array
+
+### 1. No dependency
+
+```jsx
+useEffect(() => {});
+```
+
+Runs on every render ❌
+
+---
+
+### 2. Empty array
+
+```jsx
+useEffect(() => {}, []);
+```
+
+Runs only once (mount)
+
+---
+
+### 3. With dependencies
+
+```jsx
+useEffect(() => {}, [count]);
+```
+
+Runs when `count` changes
+
+---
+
+## Cleanup Function
+
+```jsx
+useEffect(() => {
+  const timer = setInterval(() => {}, 1000);
+
+  return () => clearInterval(timer);
+}, []);
+```
+
+---
+
+## Infinite Loop Problem
+
+```jsx
+useEffect(() => {
+  setCount(count + 1);
+}, [count]);
+```
+
+→ Causes infinite re-renders ❌
+
+---
+
+## API Calls Example
+
+```jsx
+useEffect(() => {
+  fetch("/api/data")
+    .then(res => res.json())
+    .then(data => setData(data));
+}, []);
+```
+
+---
+
+---
+
+# 3. useRef
+
+Used for:
+
+- DOM access
+- Mutable values
+- Persistent storage
+
+---
+
+## DOM Reference
+
+```jsx
+const inputRef = useRef();
+
+<input ref={inputRef} />
+```
+
+---
+
+## Access Value
+
+```jsx
+inputRef.current.focus();
+```
+
+---
+
+## Mutable Values (No re-render)
+
+```jsx
+const countRef = useRef(0);
+countRef.current++;
+```
+
+---
+
+## Previous State Tracking
+
+```jsx
+const prevCount = useRef();
+useEffect(() => {
+  prevCount.current = count;
+}, [count]);
+```
+
+---
+
+---
+
+# 4. useMemo
+
+Used for **memoizing expensive calculations**.
+
+---
+
+## Example:
+
+```jsx
+const result = useMemo(() => {
+  return expensiveFunction(data);
+}, [data]);
+```
+
+---
+
+## Purpose:
+
+- Avoid recalculation
+- Improve performance
+
+---
+
+## Use Cases:
+- Large loops
+- Filtering big arrays
+- Computations
+
+---
+
+---
+
+# 5. useCallback
+
+Used to memoize functions.
+
+---
+
+## Example:
+
+```jsx
+const handleClick = useCallback(() => {
+  console.log("clicked");
+}, []);
+```
+
+---
+
+## Why needed?
+
+Prevents **child re-renders** due to new function reference.
+
+---
+
+---
+
+# 6. useContext
+
+Used for **global state sharing**.
+
+---
+
+## Example:
+
+```jsx
+const ThemeContext = createContext();
+```
+
+---
+
+## Provider:
+
+```jsx
+<ThemeContext.Provider value="dark">
+  <App />
+</ThemeContext.Provider>
+```
+
+---
+
+## Consumer:
+
+```jsx
+const theme = useContext(ThemeContext);
+```
+
+---
+
+---
+
+# 7. useReducer
+
+Alternative to useState for **complex state logic**.
+
+---
+
+## Example:
+
+```jsx
+const reducer = (state, action) => {
+  switch(action.type) {
+    case "INC":
+      return state + 1;
+    default:
+      return state;
+  }
+};
+
+const [state, dispatch] = useReducer(reducer, 0);
+```
+
+---
+
+## Use Cases:
+- Complex state transitions
+- Redux-like logic
+- Multiple state actions
+
+---
+
+---
+
+# 8. Custom Hooks
+
+Used for **reusability of logic**.
+
+---
+
+## Example:
+
+```jsx
+function useFetch(url) {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch(url)
+      .then(res => res.json())
+      .then(setData);
+  }, [url]);
+
+  return data;
+}
+```
+
+---
+
+## Rules:
+- Must start with `use`
+- Can use other hooks inside
+
+---
+
+---
+
+# SECTION 12: REACT RENDERING (VERY IMPORTANT)
+
+---
+
+# 1. What causes re-render?
+
+- State change
+- Props change
+- Context change
+- Parent re-render
+
+---
+
+# 2. Parent Re-render Effect
+
+If parent re-renders → child also re-renders (default behavior)
+
+---
+
+# 3. Child Re-render Effect
+
+Child re-renders when:
+- props change
+- parent re-renders
+- state changes
+
+---
+
+# 4. State Update Re-render
+
+```jsx
+setCount(count + 1);
+```
+
+→ triggers re-render
+
+---
+
+# 5. Context Re-render
+
+Any context update causes all consumers to re-render.
+
+---
+
+# 6. Memoization
+
+Used to prevent unnecessary re-renders:
+
+- React.memo
+- useMemo
+- useCallback
+
+---
+
+## Why is my component re-rendering?
+
+### Common reasons:
+- State update
+- Parent re-render
+- New props reference
+- Context update
+- New function/object reference
+
+---
+
+# SECTION 13: CONTEXT API
+
+---
+
+# 1. Problem Statement
+
+Props drilling problem:
+
+```text
+App → A → B → C → D
+```
+
+Unnecessary prop passing.
+
+---
+
+# 2. Solution: Context API
+
+---
+
+# 3. Create Context
+
+```jsx
+const UserContext = createContext();
+```
+
+---
+
+# 4. Provider
+
+```jsx
+<UserContext.Provider value="Shreya">
+  <App />
+</UserContext.Provider>
+```
+
+---
+
+# 5. Consumer
+
+```jsx
+const user = useContext(UserContext);
+```
+
+---
+
+# 6. useContext Hook
+
+Simplifies consuming context.
+
+---
+
+# 7. Context Limitations
+
+- Causes unnecessary re-renders
+- Not suitable for large complex state
+- Not a full state management solution
+- Hard to optimize deeply
+
+---
+
+# QUICK REVISION SUMMARY
+
+---
+
+## Hooks
+- useState → local state
+- useEffect → side effects
+- useRef → DOM + mutable values
+- useMemo → memoized values
+- useCallback → memoized functions
+- useContext → global state sharing
+- useReducer → complex state logic
+- Custom hooks → reusable logic
+
+---
+
+## Rendering
+- Re-render caused by state/props/context changes
+- Parent re-render affects children
+- Memoization reduces unnecessary renders
+- Context updates re-render consumers
+
+---
+
+## Context API
+- Solves props drilling
+- Provider + Consumer model
+- useContext simplifies usage
+- Not ideal for large-scale state management
+````
